@@ -1,0 +1,47 @@
+@import "../../../../main.global.scss";
+
+.controls {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+  order: 2;
+  justify-content: space-between;
+
+  @include media-tablet {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+  }
+
+}
+
+.actionButton {
+  white-space: nowrap;
+  background-color: $grayC4;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  line-height: 20px;
+
+
+  @include media-tablet {
+    background: transparent;
+    width: auto;
+    &> svg > path {
+      fill: $gray99;
+    }
+  }
+
+  @include media-desktop {
+    display: inline;
+  }
+}
+
+
+
+

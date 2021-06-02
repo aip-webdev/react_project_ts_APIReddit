@@ -1,0 +1,15 @@
+@import "../../../main.global.scss";
+
+.searchBlock {
+  order: 2;
+
+  @include media-tablet {
+    margin: 0 0 0 auto;
+    padding: 14px 20px;
+    background-color: $white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    order: 3;
+  }
+}
+

@@ -1,0 +1,53 @@
+@import "../../../main.global";
+
+.userBox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  &:hover {
+    .avatarBox {
+      box-shadow: 0 0 0 1px $orange;
+    }
+    .userName {
+      span {
+        color: $orange;
+      }
+    }
+  }
+  @include media-tablet {
+    margin-left: 50px;
+    order: 4;
+  }
+}
+
+.avatarBox {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 100%;
+  box-shadow: none;
+  @include media-tablet {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.userName {
+  padding-left: 15px;
+  display: none;
+  @include media-tablet {
+    display: flex;
+  }
+
+  @include media-desktop {
+    display: flex;
+
+  }
+}

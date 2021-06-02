@@ -1,0 +1,19 @@
+@import "../../main.global.scss";
+
+.layout {
+    min-width: 320px;
+    max-width: 320px;
+    margin: 0 auto;
+
+    @include media-tablet {
+        min-width: 1024px;
+        max-width: 1024px;
+    }
+
+    @include media-desktop{
+        padding: 75px 70px 80px;
+        min-width: 1540px;
+        max-width: 1540px;
+    }
+}
+

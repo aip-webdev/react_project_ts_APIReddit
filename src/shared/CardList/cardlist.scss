@@ -1,0 +1,16 @@
+@import "../../main.global.scss";
+
+.cardList {
+  @include list-reset;
+
+  @include media-tablet {
+    padding: 40px 0;
+  }
+
+  @include media-desktop {
+    padding: 60px;
+  }
+}
+
+
+

@@ -1,0 +1,9 @@
+@import "../../main.global.scss";
+
+.content {
+  @include media-tablet {
+    background-color: $white;
+    border-radius: 7px 7px 0 0;
+  }
+}
+
