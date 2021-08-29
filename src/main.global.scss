@@ -23,16 +23,13 @@ body {
 }
 
 * {
-  margin: 0;
-  padding: 0;
   color: $black;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@mixin list-reset {
-  list-style: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
 }
 
 a {
@@ -47,6 +44,10 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+@mixin list-reset {
+  list-style: none;
 }
 
 @mixin media-mobile {

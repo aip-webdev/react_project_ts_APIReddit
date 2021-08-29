@@ -1,6 +1,6 @@
 import React from 'react';
 import {ActionButton} from "../Actions/ActionButton";
-import {EIcon, Icon} from "../../../../Icon";
+import {EIcon, Icon} from "../../../../Components/Icon";
 
 interface IComments {
     text?: any;

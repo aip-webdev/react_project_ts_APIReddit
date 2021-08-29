@@ -6,7 +6,7 @@ import {Controls} from "./Controls";
 import {Menu} from "./Menu";
 import {IPostsContextData} from "../../context/postsContext";
 import {includes} from "ramda";
-import {Text} from "../../Text";
+import {Text} from "../../Components/Text";
 import {stringShorter} from "../../../utils/react/stringShorter";
 
 interface ICardData {

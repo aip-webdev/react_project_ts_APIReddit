@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './menu.scss';
-import {Dropdown} from "../../../Dropdown";
+import {Dropdown} from "../../../Components/Dropdown";
 import {useMediaSize} from "../../../../hooks/useMediaSize";
 import {contains, filter} from "ramda";
 import {Comments} from "../Controls/Comments";
@@ -78,14 +78,14 @@ export function Menu() {
     let [list, setList] = useState(actionsList)
     let [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
     const isMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'comments', 'share', 'remove', 'save']);
-    const isNoMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'remove' ])
+    const isNoMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'remove' ]);
     useEffect(()=> {
         if(isMediaMobile) {
             setList(filter( isMobileActions, actionsList));
         } else {
             setList(filter( isNoMobileActions, actionsList));
         }
-    }, [isMediaMobile])
+    }, [isMediaMobile]);
 
   return (
     <div className={styles.menu}>

@@ -1,15 +1,45 @@
 @import "../../../main.global.scss";
 
 .searchBlock {
+  align-items: center;
+  background-color: $grayF4;
+  border-radius: 30px;
+
+  display: flex;
+  min-width: 190px;
+  margin: 0 15px;
+  padding: 6.75px 16px;
   order: 2;
 
+  form {
+    margin-left: 4px;
+    input {
+      font-size: 12px;
+      line-height: 14px;
+      background-color: transparent;
+    }
+  }
   @include media-tablet {
-    margin: 0 0 0 auto;
-    padding: 14px 20px;
+    min-width: 360px;
     background-color: $white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
+
     order: 3;
+    margin: 0 30px;
+    padding: 13.5px 29px;
+
+    form {
+      margin-left: 10px;
+      input {
+        font-size: 20px;
+        line-height: 23px;
+      }
+    }
   }
+
+  @include media-desktop {
+    margin: 0 45px 0 50px;
+  }
+
 }
 

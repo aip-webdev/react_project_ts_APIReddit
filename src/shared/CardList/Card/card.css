@@ -28,6 +28,7 @@ button {
 
 .card {
   position: relative;
+  background-color: white;
   border-radius: 7px;
   display: flex;
   flex-flow: row wrap;

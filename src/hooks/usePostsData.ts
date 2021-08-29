@@ -16,7 +16,7 @@ interface IPostData {
 
 export function usePostsData() {
     const [postsData, setData] = useState<IPostData[]>([])
-    const token = useContext(tokenContext)
+    const { token } = useContext(tokenContext)
     useEffect(() => {
         axios.get('https://oauth.reddit.com/best.json', {
             headers: { Authorization: `bearer ${token}` }

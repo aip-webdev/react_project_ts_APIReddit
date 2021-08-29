@@ -4,31 +4,29 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  &:hover {
-    .avatarBox {
-      box-shadow: 0 0 0 1px $orange;
-    }
-    .userName {
-      span {
-        color: $orange;
+
+  @include media-tablet {
+    order: 4;
+  }
+
+  @include media-desktop {
+    &:hover {
+      .avatarBox {
+        box-shadow: 0 0 0 1px $orange;
       }
     }
-  }
-  @include media-tablet {
-    margin-left: 50px;
-    order: 4;
   }
 }
 
 .avatarBox {
   width: 30px;
   height: 30px;
-  padding: 5px;
   border-radius: 100%;
   box-shadow: none;
   @include media-tablet {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
   }
 }
 
@@ -40,8 +38,12 @@
 }
 
 .userName {
-  padding-left: 15px;
   display: none;
+  padding-left: 15px;
+
+  span {
+    color: $orange;
+  }
   @include media-tablet {
     display: flex;
   }

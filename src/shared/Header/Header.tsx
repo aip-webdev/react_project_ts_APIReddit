@@ -5,6 +5,8 @@ import {ThreadTitle} from "./ThreadTitle";
 import {SortBlock} from "./SortBlock";
 import {UserBlock} from "./UserBlock";
 import {userContext} from "../context/userContext";
+import {EIcon, Icon} from "../Components/Icon";
+import {Mails} from "./Mails";
 
 
 export function Header() {
@@ -12,6 +14,7 @@ export function Header() {
   return (
       <header className={styles.header}>
           <div className={styles.headersBlock}>
+              <Mails />
               <SearchBlock />
               <UserBlock avatarSrc={ iconImg } userName={ name  }/>
           </div>

@@ -35,7 +35,7 @@ button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
+    right: 20px;
     display: flex;
     flex-direction: column; } }
 @media all and (min-width: 1540px) {
@@ -45,7 +45,11 @@ button {
     fill: #CC6633; } }
 
 .karmaValue {
-  color: #c4c4c4; }
+  color: #c4c4c4;
+  margin: 0 10px; }
+  @media all and (min-width: 1024px) {
+    .karmaValue {
+      margin: 0; } }
 
 .down > svg {
   transform: rotate(180deg); }
