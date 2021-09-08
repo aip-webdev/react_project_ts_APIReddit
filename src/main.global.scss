@@ -13,13 +13,18 @@ $gray99: hsl(0, 0%, ($whiteLightness - 40%));
 $gray66: hsl(0, 0%, ($whiteLightness - 60%));
 $gray33: hsl(0, 0%, ($whiteLightness - 80%));
 
-body {
+html, body {
+  height: 100%;
   padding: 0;
   margin: 0;
   background-color: $grayF4;
   font-size: 14px;
   line-height: 16px;
   font-family: 'Roboto', serif;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 }
 
 * {
@@ -65,5 +70,31 @@ button {
 @mixin media-desktop {
   @media all and (min-width: 1540px)  {
     @content
+  }
+}
+
+@mixin nice-scroll {
+  &::-webkit-scrollbar {
+    padding-right: 10px;
+    width: 7px;
+    height: 4px;
+    background-color: $grayF4;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+    background: $white ;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+    background-color: $grayD9;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    border-radius: 3px;
+    background-color: $orange;
   }
 }

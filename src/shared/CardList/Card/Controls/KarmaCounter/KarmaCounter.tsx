@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import styles from './karmacounter.scss';
 import {EIcon, Icon} from "../../../../Components/Icon";
 
 interface IKarmaCounterProps {
+    style?: CSSProperties;
     count: number;
 }
 
 export function KarmaCounter(props: IKarmaCounterProps) {
-    const {count} = props;
+    const {count, style} = props;
   return (
-      <div className={styles.karmaCounter}>
+      <div style={style} className={styles.karmaCounter}>
         <button className={styles.up}>
             { <Icon type={EIcon.arrow} width={19} height={10} pathFill='#999999'/> }
         </button>

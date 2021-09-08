@@ -5,23 +5,19 @@ import {Preview} from "./Preview";
 import {Controls} from "./Controls";
 import {Menu} from "./Menu";
 import {IPostsContextData} from "../../context/postsContext";
-import {includes} from "ramda";
-import {Text} from "../../Components/Text";
-import {stringShorter} from "../../../utils/react/stringShorter";
+import {isImageUrl} from "../../../utils/js/isImageUrl";
 
 interface ICardData {
     post: IPostsContextData;
 }
 
 export function Card({post}: ICardData) {
-    const {id, author, author_url, post_url, count_comments, count_karma, url, self_text, title} = post;
-    const isImageUrl = () =>
-        includes('png', url) || includes('jpg', url) || includes('svg', url)
+    const {id, author, author_url, post_url, topic_name, count_comments, count_karma, url, self_text, title} = post;
+
   return (
       <li className={styles.card}>
-        <TextContent author={author} authorUrl={author_url} title={title} selfText={self_text} postUrl={post_url} />
-        {isImageUrl() && <Preview url={url}/>}
-        {!isImageUrl() && <a className={styles.postLink} href={url}><Text  size={14}>{stringShorter(url,40)}</Text></a>}
+        <TextContent post={post} author={author} authorUrl={author_url} topicName={topic_name} title={title} selfText={self_text} postUrl={post_url} />
+        {isImageUrl(url) && <Preview url={url}/>}
         <Controls karmaCount={count_karma} commentsCount={count_comments} />
         <Menu />
       </li>

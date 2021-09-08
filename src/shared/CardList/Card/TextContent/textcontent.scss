@@ -1,31 +1,14 @@
 @import "../../../../main.global.scss";
-.avatar {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-}
-
-.createdAt, .createdAt * {
-  color: $gray99;
-}
-
-.metaData {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  font-size: 10px;
-
-  @include media-tablet {
-    font-size: 14px;
-    order: 1;
-  }
-}
 
 .textContent {
   padding: 20px 20px 15px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+
+  button {
+    text-align: start;
+  }
 
   @include media-tablet {
     order: 1;
@@ -38,6 +21,9 @@
 
   @include media-desktop {
     flex-basis: 672px;
+    cursor: auto;
+    max-width: 80%;
+
   }
 }
 
@@ -107,31 +93,6 @@
   }
 }
 
-.userLink {
-  display: flex;
-  align-items: center;
 
-
-  @include media-tablet {
-    margin-left: 5px;
-    order: 1;
-  }
-
-  @include media-desktop {
-    &:hover a{
-      text-decoration: underline;
-    }
-  }
-}
-
-.userName {
-  color: $orange;
-  margin: 0 7px;
-
-  @include media-desktop {
-    position: relative;
-    z-index: 1;
-  }
-}
 
 

@@ -39,6 +39,10 @@
     padding: 0;
     order: 1;
     margin-top: 10px;
-
+  }
+  @include media-desktop {
+    &:hover {
+      color: $orange;
+    }
   }
 }

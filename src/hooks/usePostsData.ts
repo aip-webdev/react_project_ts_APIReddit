@@ -6,18 +6,22 @@ interface IPostData {
     id: string;
     author: string;
     author_url?: string;
-    post_url?: string;
-    title?: string;
-    url: string;
+    author_img?: string;
     count_comments: number;
     count_karma: number;
+    post_url?: string;
     self_text?: string;
+    title?: string;
+    topic_name?: string;
+    url: string;
+    upvote_ratio?: number;
 }
 
-export function usePostsData() {
+    export function usePostsData() {
     const [postsData, setData] = useState<IPostData[]>([])
     const { token } = useContext(tokenContext)
     useEffect(() => {
+
         axios.get('https://oauth.reddit.com/best.json', {
             headers: { Authorization: `bearer ${token}` }
         })
@@ -31,19 +35,20 @@ export function usePostsData() {
                         author: postData.author,
                         author_url: 'https://www.reddit.com/r/' + postData.subreddit + '/',
                         post_url: 'https://www.reddit.com/' + postData.permalink,
-                        author_fullname: postData.author_fullname,
+                        topic_name: postData.link_flair_text,
                         title: postData.title,
+                        upvote_ratio: postData.upvote_ratio*100,
                         url: postData.url,
                         count_comments: postData.num_comments,
                         count_karma: postData.ups,
                         self_text: postData.selftext,
                     }
                 })
-
                 setData(postDataList);
             })
             .catch(console.log)
     }, [token])
+
 
     return [postsData]
 }

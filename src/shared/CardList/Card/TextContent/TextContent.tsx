@@ -1,45 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './textcontent.scss';
+import {Post} from "../Post";
+import {stringShorter} from "../../../../utils/js/stringShorter";
+import {IPostsContextData} from "../../../context/postsContext";
+import {MetaData} from "../MetaData";
 
 interface ITextContentProps {
-    author?: string;
+    author: string;
     authorUrl?: string;
     title?: string;
+    topicName?: string;
     postUrl?: string;
     selfText?: string;
+    post: IPostsContextData;
 }
 
 export function TextContent(props: ITextContentProps) {
-    const {author, authorUrl, postUrl, selfText, title} = props;
-  return (
-    <div className={styles.textContent}>
-      <div className={styles.metaData}>
-        <div className={styles.userLink}>
-          <img
-              className={styles.avatar}
-              src={'https://img1.fonwall.ru/o/yx/games-2020-games-maneater-ps4-games.jpeg?route=mid&h=750'}
-              alt="avatar"
-          />
+    const { author, authorUrl, post, selfText, title, topicName } = props;
+    const [isModalOpened, setIsModalOpened] = useState(false);
 
-          <a href={authorUrl} className={styles.userName}>{author}</a>
-        </div>
-        <span className={styles.createdAt}>
-            <span className={styles.publishedLabel}>опубликовано </span>
-            4 часа назад
-        </span>
-      </div>
-      <h2 className={styles.title}>
-        <a href={postUrl} className={styles.postLink}>
+    return (
+    <div className={styles.textContent}>
+        <MetaData author={author} authorUrl={authorUrl} topicName={topicName}/>
+        <h2 className={styles.title}>
+        <button type='button' className={styles.postLink} onClick={() => {setIsModalOpened(true)}}>
             {title}
+        </button>
             {selfText &&
                 <h3 className={styles.titleSelf}>
-                    {selfText}
+                    {stringShorter(selfText, 30, 60, 80)}
                 </h3>
             }
-        </a>
-      </h2>
+        </h2>
+        {isModalOpened && <Post post={post} onClose ={() => setIsModalOpened(false)} />}
     </div>
-
-
-  );
+    );
 }

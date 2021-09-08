@@ -12,7 +12,7 @@ export function Preview(props: IPreviewProps) {
         <img
             className={styles.previewImg}
             src={url}
-            alt="Smart home"
+            alt="Post image"
         />
     </div>
   );

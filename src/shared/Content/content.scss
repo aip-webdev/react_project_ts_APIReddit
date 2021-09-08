@@ -5,5 +5,16 @@
     background-color: $white;
     border-radius: 7px 7px 0 0;
   }
+
+  @include media-desktop {
+    margin-top: 45px;
+    padding:0 60px 0 0;
+    background-color: $grayF4;
+
+    overflow-y: scroll;
+    height: 80vh;
+
+    @include nice-scroll;
+  }
 }
 
