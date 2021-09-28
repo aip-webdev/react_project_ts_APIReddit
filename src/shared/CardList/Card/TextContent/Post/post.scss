@@ -1,0 +1,48 @@
+@import "../../../../../main.global";
+
+.closeBtn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.post {
+  max-height: 60vh;
+  padding: 0 35px;
+  width: 960px;
+  overflow-y: scroll;
+  @include nice-scroll;
+}
+.postContent {
+  border-bottom: 1px solid $grayD9;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.postText {
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+.postInfo {
+  display: flex;
+  align-items: center;
+  width: 960px;
+  padding: 0 25px 25px;
+  position: relative;
+}
+
+.postTopRight {
+  padding:  0 23px;
+}
+
+.postTitle {
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.postImg {
+  width: 100%;
+  max-height: 494px;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "reactproject",
+  "name": "react-project-with-reddit-api",
   "version": "1.0.0",
   "description": "Training react project",
   "main": "index.js",
@@ -38,6 +38,7 @@
     "enzyme-to-json": "^3.6.1",
     "identity-obj-proxy": "^3.0.0",
     "react-hot-loader": "^4.13.0",
+    "react-html-parser": "2.0.2",
     "react-scripts": "^4.0.1",
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1",

@@ -4,9 +4,9 @@ export const generateRandomString = () => Math.random().toString(36).substring(2
 
 export const assignId = assoc('id', generateRandomString());
 
-export const generateId = <O extends object>(obj: O) => {
+export const generateAnyKey = <O extends object>(obj: O) => {
     return {
         ...obj,
-        id: Math.random().toString(36).substring(2, 15)
+        key: Math.random().toString(36).substring(2, 15)
     }
 };

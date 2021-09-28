@@ -1,4 +1,4 @@
-@import "../../../../../main.global.scss";
+@import "../../../../../../main.global";
 
 .actionButton {
   display: flex;
@@ -14,5 +14,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 35px;
+  padding: 15px;
 }

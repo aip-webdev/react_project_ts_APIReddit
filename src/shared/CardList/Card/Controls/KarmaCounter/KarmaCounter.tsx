@@ -1,6 +1,6 @@
 import React, {CSSProperties} from 'react';
 import styles from './karmacounter.scss';
-import {EIcon, Icon} from "../../../../Components/Icon";
+import {EIcon, Icon} from "../../../../ReusedComponents/Icon";
 
 interface IKarmaCounterProps {
     style?: CSSProperties;

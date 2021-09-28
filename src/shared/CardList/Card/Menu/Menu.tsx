@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './menu.scss';
-import {Dropdown} from "../../../Components/Dropdown";
+import {Dropdown} from "../../../ReusedComponents/Dropdown";
 import {useMediaSize} from "../../../../hooks/useMediaSize";
 import {contains, filter} from "ramda";
 import {Comments} from "../Controls/Comments";

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import styles from './userblock.scss';
-import {EIcon, Icon} from "../../Components/Icon";
+import {EIcon, Icon} from "../../ReusedComponents/Icon";
 import {EColor} from "../../../utils/enums/colorEnum";
-import {Text} from "../../Components/Text";
+import {Text} from "../../ReusedComponents/Text";
 import {useMediaSize} from "../../../hooks/useMediaSize";
 
 interface IUserBlockProps {

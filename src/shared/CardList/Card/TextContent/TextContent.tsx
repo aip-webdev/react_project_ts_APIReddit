@@ -1,38 +1,32 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './textcontent.scss';
-import {Post} from "../Post";
+import {Post} from "./Post";
 import {stringShorter} from "../../../../utils/js/stringShorter";
-import {IPostsContextData} from "../../../context/postsContext";
-import {MetaData} from "../MetaData";
+import {MetaData} from "../../../ReusedComponents/MetaData";
+import {ICardData} from "../Card";
+import {postsAndCommentsContext} from "../../../context/postWithCommentsContext";
 
-interface ITextContentProps {
-    author: string;
-    authorUrl?: string;
-    title?: string;
-    topicName?: string;
-    postUrl?: string;
-    selfText?: string;
-    post: IPostsContextData;
-}
-
-export function TextContent(props: ITextContentProps) {
-    const { author, authorUrl, post, selfText, title, topicName } = props;
+export function TextContent({post}: ICardData) {
+    const {id, author, author_url, post_url, topic_name, count_comments, count_karma, created, url, self_text, title} = post;
     const [isModalOpened, setIsModalOpened] = useState(false);
-
+    let posts = useContext(postsAndCommentsContext);
     return (
-    <div className={styles.textContent}>
-        <MetaData author={author} authorUrl={authorUrl} topicName={topicName}/>
-        <h2 className={styles.title}>
-        <button type='button' className={styles.postLink} onClick={() => {setIsModalOpened(true)}}>
-            {title}
-        </button>
-            {selfText &&
-                <h3 className={styles.titleSelf}>
-                    {stringShorter(selfText, 30, 60, 80)}
-                </h3>
+        <div className={styles.textContent}>
+            <MetaData author={author} authorUrl={author_url} topicName={topic_name} publicationTime={created}/>
+            <h2 className={styles.title}>
+                <button type='button' className={styles.postLink} onClick={() => { setIsModalOpened(!isModalOpened) }}>
+                    {title}
+                </button>
+                {self_text &&
+                <span className={styles.titleSelf}>
+                    {stringShorter(self_text, 30, 60, 80)}
+                </span>
+                }
+            </h2>
+            {posts && isModalOpened && <Post
+                post={posts.filter(postData => postData.id = id)[0]}
+                onClose={() => setIsModalOpened(false)}/>
             }
-        </h2>
-        {isModalOpened && <Post post={post} onClose ={() => setIsModalOpened(false)} />}
-    </div>
+        </div>
     );
 }

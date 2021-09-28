@@ -1,4 +1,5 @@
-@import "../../../../main.global.scss";
+@import "../../../main.global.scss";
+
 .avatar {
   width: 20px;
   height: 20px;
@@ -7,6 +8,13 @@
 
 .createdAt, .createdAt * {
   color: $gray99;
+}
+#modal__root {
+  @include media-tablet {
+    .createdAt {
+      order: 2;
+    }
+  }
 }
 
 .metaData {

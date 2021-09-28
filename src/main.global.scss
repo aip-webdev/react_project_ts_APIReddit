@@ -21,7 +21,7 @@ html, body {
   font-size: 14px;
   line-height: 16px;
   font-family: 'Roboto', serif;
-
+  overflow: hidden;
   &::-webkit-scrollbar {
     width: 0;
   }

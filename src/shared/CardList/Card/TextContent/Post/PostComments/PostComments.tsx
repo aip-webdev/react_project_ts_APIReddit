@@ -1,0 +1,34 @@
+import React from 'react';
+import styles from './postcomments.scss';
+import {SortBlock} from "../../../../../ReusedComponents/SortBlock";
+import {sortingPostComments} from "../../../../../../utils/lists/sortPostComments";
+import {ICommentsData} from "../../../../../../hooks/usePostsWithCommentsData";
+import {Comment} from "./Comment";
+
+
+interface IPostCommentsProps {
+    comments: ICommentsData[]
+}
+
+export function PostComments(props: IPostCommentsProps) {
+    const {comments} = props;
+    comments.pop();
+  return (
+   <div>
+       <div className={styles.container}>
+           <span>Сортировать по:</span>
+           <SortBlock
+               sortList={sortingPostComments}
+               selectButtonStyle={styles.selectButton}
+               sortListStyle={styles.sortList}
+               listLineStyle={styles.listLine}
+           />
+       </div>
+       <ul>
+           {(comments.length > 0) && comments.map((comment) => (
+               <Comment key={`${comment.id}${comments.indexOf(comment)}`} comment={comment} />
+           ))}
+       </ul>
+   </div>
+  );
+}

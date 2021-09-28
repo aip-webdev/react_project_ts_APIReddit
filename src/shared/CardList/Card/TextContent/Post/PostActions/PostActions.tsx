@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './postactions.scss';
-import {Comments} from "../../Controls/Comments";
-import {Share} from "../../Controls/Actions/Share";
-import {Hide} from "../../Controls/Actions/Hide";
-import {Save} from "../../Controls/Actions/Save";
-import {Complain} from "../../Controls/Actions/Complain";
-import {Text} from "../../../../Components/Text";
-import {EColor} from "../../../../../utils/enums/colorEnum";
-import {declOfNum} from "../../../../../utils/js/declOfNumVal";
+import {Comments} from "../../../Controls/Comments";
+import {Share} from "../../../Controls/Actions/Share";
+import {Hide} from "../../../Controls/Actions/Hide";
+import {Save} from "../../../Controls/Actions/Save";
+import {Complain} from "../../../Controls/Actions/Complain";
+import {Text} from "../../../../../ReusedComponents/Text";
+import {EColor} from "../../../../../../utils/enums/colorEnum";
+import {declOfNum} from "../../../../../../utils/js/declOfNumVal";
 
 interface PostActionsParams {
     upvote_ratio?: number;

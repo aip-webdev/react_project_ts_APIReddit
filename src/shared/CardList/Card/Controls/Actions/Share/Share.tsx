@@ -1,6 +1,7 @@
 import React from 'react';
 import {ActionButton} from "../ActionButton";
-import {EIcon, Icon} from "../../../../../Components/Icon";
+import {EIcon, Icon} from "../../../../../ReusedComponents/Icon";
+
 
 interface IShare {
     text?: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './searchblock.scss';
-import {Input} from "../../Components/Input";
-import {EIcon, Icon} from "../../Components/Icon";
+import {Input} from "../../ReusedComponents/Input";
+import {EIcon, Icon} from "../../ReusedComponents/Icon";
 import {useMediaSize} from "../../../hooks/useMediaSize";
 
 
