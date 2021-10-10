@@ -1,15 +1,19 @@
-import React, {useContext, useState} from 'react';
+import React, { useState} from 'react';
 import styles from './textcontent.scss';
-import {Post} from "./Post";
+
 import {stringShorter} from "../../../../utils/js/stringShorter";
 import {MetaData} from "../../../ReusedComponents/MetaData";
 import {ICardData} from "../Card";
-import {postsAndCommentsContext} from "../../../context/postWithCommentsContext";
+import {Post} from "../../../Post";
+
+import {IPostWithCommentsData, usePostsWithCommentsData} from "../../../../hooks/usePostsWithCommentsData";
+import {useSelector} from "react-redux";
+import {IInitState} from "../../../../store";
 
 export function TextContent({post}: ICardData) {
     const {id, author, author_url, post_url, topic_name, count_comments, count_karma, created, url, self_text, title} = post;
     const [isModalOpened, setIsModalOpened] = useState(false);
-    let posts = useContext(postsAndCommentsContext);
+    const postsWCData = useSelector<IInitState, IPostWithCommentsData[]>( state => state.postWithComments.postsWCData);
     return (
         <div className={styles.textContent}>
             <MetaData author={author} authorUrl={author_url} topicName={topic_name} publicationTime={created}/>
@@ -23,8 +27,8 @@ export function TextContent({post}: ICardData) {
                 </span>
                 }
             </h2>
-            {posts && isModalOpened && <Post
-                post={posts.filter(postData => postData.id = id)[0]}
+            {postsWCData && isModalOpened && <Post
+                post={postsWCData.filter(post => post.id===id)[0]}
                 onClose={() => setIsModalOpened(false)}/>
             }
         </div>

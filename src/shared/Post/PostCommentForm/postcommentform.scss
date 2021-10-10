@@ -1,0 +1,40 @@
+@import "../../../main.global.scss";
+
+.form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  background-color: transparent;
+  border: 1px solid $grayD9;
+  border-radius: 3px 3px 0 0;
+  padding: 16px 18px;
+  min-height: 90px;
+  font-size: 16px;
+  width: 100%;
+  z-index: 1002;
+}
+
+.label {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  z-index: 1001;
+  cursor: text;
+  color: $gray99;
+}
+
+.username {
+  color: $orange;
+}
+
+.submitBtn {
+  background-color: $orange;
+  color: $white;
+  font-size: 14px;
+  line-height: 50px;
+  text-align: center;
+  width: 25%;
+}

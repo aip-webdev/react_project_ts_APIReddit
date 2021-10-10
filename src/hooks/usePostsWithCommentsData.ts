@@ -1,7 +1,8 @@
-import {useContext, useEffect, useState} from "react";
-import axios from "axios";
-import  {merge} from "ramda";
-import {IPostData, usePostsData} from "./usePostsData";
+import {useEffect} from "react";
+import {IPostData} from "./usePostsData";
+import {useDispatch, useSelector} from "react-redux";
+import {postsWCRequestAsync} from "../store/actions/postWCActions";
+import {IInitState} from "../store";
 
 export interface ICommentsData {
     id: string;
@@ -31,42 +32,13 @@ export interface IPostWithCommentsData {
 }
 
 export function usePostsWithCommentsData() {
-    const [postsData, setData] = useState<IPostWithCommentsData[]>([])
-    let [posts] = usePostsData();
-    const createPostData = (comment: any) => {
-        let commentData = comment.data;
-        return {
-            id: commentData.id,
-            author: commentData.author,
-            author_url: 'https://www.reddit.com/r/' + commentData.subreddit + '/',
-            comment_body: commentData.body_html,
-            replies: commentData.replies?.data?.children
-                .map((reply: { kind: string | string[]; data: any; }) => {
-                    if (!reply.kind.includes('more')) {
-                        return reply;
-                    } else return null;
-                })
-                .filter((reply: any) => !!reply?.data?.author)
-                .map(createPostData),
-            count_karma: commentData.ups,
-            created: new Date(commentData.created * 1000),
-        };
-    }
+    const postsWCData = useSelector<IInitState, IPostWithCommentsData[]>( state => state.postWithComments.postsWCData);
+    const postsData = useSelector<IInitState, IPostData[]>( state => state.posts.postsData);
+    const loading = useSelector<IInitState, boolean>( state => state.postWithComments.loading);
+    const dispatch = useDispatch();
     useEffect(() => {
-        let resData = posts.map((post: IPostData) => {
-            let newPost:IPostWithCommentsData;
-            return axios.get(`https://www.reddit.com${post.post_url}.json`)
-                .then((res) => {
-                    newPost = merge(post, {
-                        comments: res.data[1]?.data?.children?.map(createPostData)
-                    });
-                    postsData.push(newPost)
-                   return newPost
-                })
-                .catch(console.log);
-        })
-        setData(postsData)
-    }, [posts])
+        if (postsData) dispatch(postsWCRequestAsync())
+    }, [postsData])
 
-    return [postsData]
+    return {loading, postsWCData}
 }

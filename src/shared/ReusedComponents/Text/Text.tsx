@@ -3,7 +3,6 @@ import styles from './text.scss';
 import {EColor} from "../../../utils/enums/colorEnum";
 const classNames = require('classnames');
 type TSizes = 9 | 10 | 12 | 14 | 16 | 20 | 28;
-
 interface ITextProps {
   As?: 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'div';
   children: React.ReactNode;
@@ -11,7 +10,7 @@ interface ITextProps {
   mobileSize?: TSizes;
   tabletSize?: TSizes;
   desktopSize?: TSizes;
-  color?: EColor;
+  color: EColor;
 }
 
 export function Text(props: ITextProps) {

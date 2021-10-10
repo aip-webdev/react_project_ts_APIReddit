@@ -1,12 +1,12 @@
-import React, {useCallback, useContext, useEffect, useMemo} from 'react';
+import React from 'react';
 import styles from './metadata.scss';
 
-import {useUserImgData} from "../../../hooks/useUserImgData";
-import {useMediaSize} from "../../../hooks/useMediaSize";
-import {getLongAgoDate} from "../../../utils/js/getLongAgoDate";
-
-import {userContext} from "../../context/userContext";
-
+import {useUserImgData} from '../../../hooks/useUserImgData';
+import {useMediaSize} from '../../../hooks/useMediaSize';
+import {getLongAgoDate} from '../../../utils/js/getLongAgoDate';
+import {useSelector} from 'react-redux';
+import {IInitState} from '../../../store';
+import {IUserData} from '../../../hooks/useUserData';
 
 interface IMetaDataParams {
   author: string;
@@ -18,8 +18,8 @@ interface IMetaDataParams {
 export function  MetaData(props: IMetaDataParams) {
     const {author, authorUrl, topicName, publicationTime} = props;
     let [isMediaMobile] = useMediaSize();
-    const {name} = useContext(userContext);
-    let avatar = name? useUserImgData(author)[0] : '';
+    const { iconImg, name } = useSelector<IInitState, IUserData>( state => state.me.myData);
+    let avatar = name && author !== `[deleted]` || undefined ? useUserImgData(author)[0] : '';
 
     return (
         <div className={styles.metaData}>

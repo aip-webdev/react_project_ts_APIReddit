@@ -1,13 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import styles from './cardlist.scss';
 import {Card} from "./Card";
-import {postsContext} from "../context/postsContext";
+import {usePostsData} from "../../hooks/usePostsData";
+import {usePostsWithCommentsData} from "../../hooks/usePostsWithCommentsData";
 
 export function CardList() {
-  let posts = useContext(postsContext);
+  const { postsData, loading} = usePostsData()
+  usePostsWithCommentsData();
   return (
     <ul className={styles.cardList}>
-        {posts && posts.map((post) => (
+      {loading && 'Загрузка'}
+        {postsData && postsData.map((post) => (
             <Card key={post.id} post={post}/>
         ))}
 

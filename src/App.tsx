@@ -1,35 +1,34 @@
 import {hot} from 'react-hot-loader/root';
-import React from "react";
+import React, {useEffect} from "react";
 import './main.global.scss';
+import {applyMiddleware, createStore} from "redux";
+import {composeWithDevTools} from "redux-devtools-extension";
+import {Provider} from "react-redux";
 import { Layout } from "./shared/Layout";
 import { Header } from "./shared/Header";
 import { Content } from "./shared/Content";
 import { CardList } from "./shared/CardList";
-import { TokenContextProvider } from "./shared/context/tokenContext";
-import { UserContextProvider } from "./shared/context/userContext";
-import { PostsContextProvider } from "./shared/context/postsContext";
-import { CommentContextProvider } from "./shared/context/commentsContext";
-import {PostsAndCommentsContextProvider} from "./shared/context/postWithCommentsContext";
+import {rootReducer} from "./store";
+import thunk from "redux-thunk";
+import {saveToken} from "./store/actions/tokenActions/setToken";
+
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 function AppComponent() {
+    useEffect(() => {
+        // @ts-ignore
+        store.dispatch(saveToken())
+    }, [])
+
     return (
-        <TokenContextProvider>
-            <CommentContextProvider>
-                <PostsContextProvider>
-                    <PostsAndCommentsContextProvider>
-                        <UserContextProvider>
-                            <Layout>
-                                <Header />
-                                <Content>
-                                    <CardList />
-                                </Content>
-                            </Layout>
-                        </UserContextProvider>
-                    </PostsAndCommentsContextProvider>
-                </PostsContextProvider>
-            </CommentContextProvider>
-        </TokenContextProvider>
+        <Provider store={store}>
+            <Layout>
+                <Header />
+                <Content>
+                    <CardList />
+                </Content>
+            </Layout>
+        </Provider>
     );
 }
-
 export const App = hot(() => <AppComponent />);

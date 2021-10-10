@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import styles from './menu.scss';
-import {Dropdown} from "../../../ReusedComponents/Dropdown";
 import {useMediaSize} from "../../../../hooks/useMediaSize";
 import {contains, filter} from "ramda";
 import {Comments} from "../Controls/Comments";
@@ -10,6 +9,7 @@ import {Remove} from "../Controls/Actions/Remove";
 import {Hide} from "../Controls/Actions/Hide";
 import {Complain} from "../Controls/Actions/Complain";
 import {Save} from "../Controls/Actions/Save";
+import {Dropdown} from "../../../ReusedComponents/Dropdown";
 
 const actionsList = [
     {

@@ -1,0 +1,12 @@
+@import "../../../../main.global.scss";
+
+.postCommentActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $grayD9;
+  border-radius: 0 0 3px 3px;
+  height: 50px;
+  padding: 0 90px 0 20px;
+  width: 75%;
+}
