@@ -13,9 +13,10 @@ export function useUserData() {
     const loading = useSelector<IInitState, boolean>( state => state.me.loading);
     const token = useSelector<IInitState, string>( state => state.token);
     const dispatch = useDispatch();
+
     useEffect(() => {
         if (!token) return;
-            dispatch(meRequestAsync())
-    }, [token])
+            dispatch(meRequestAsync());
+    }, [token]);
     return {data, loading}
 }

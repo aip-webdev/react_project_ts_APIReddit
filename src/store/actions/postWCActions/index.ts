@@ -5,7 +5,6 @@ import axios from "axios";
 import {merge} from "ramda";
 import {postsWCRequest} from "./postsWithCommentsRequest";
 import {setPostsWCData} from "./setPostWithCommentsData";
-import {postsWCRequestGetError} from "./postsWithCommentsRequestGetError";
 import {IPostWithCommentsData} from "../../../hooks/usePostsWithCommentsData";
 
 export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> =>async (dispatch, getState) => {

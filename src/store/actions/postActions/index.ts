@@ -6,7 +6,6 @@ import axios from "axios";
 import {postRequest} from "./postsRequest";
 import {setPostsData} from "./setPostData";
 import {postsRequestGetError} from "./postsRequestGetError";
-import {usePostsWithCommentsData} from "../../../hooks/usePostsWithCommentsData";
 
 export const postsRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> =>(dispatch, getState ) =>{
     dispatch(postRequest());

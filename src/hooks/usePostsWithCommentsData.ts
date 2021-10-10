@@ -36,9 +36,11 @@ export function usePostsWithCommentsData() {
     const postsData = useSelector<IInitState, IPostData[]>( state => state.posts.postsData);
     const loading = useSelector<IInitState, boolean>( state => state.postWithComments.loading);
     const dispatch = useDispatch();
+
     useEffect(() => {
-        if (postsData) dispatch(postsWCRequestAsync())
-    }, [postsData])
+        if (!postsData) return;
+        dispatch(postsWCRequestAsync());
+    }, [postsData]);
 
     return {loading, postsWCData}
 }
