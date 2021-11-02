@@ -11,13 +11,13 @@ interface IControlsProps {
 }
 
 export function Controls(props: IControlsProps) {
-  const {commentsCount, karmaCount} = props;
-  let [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
-  return (
-    <div className={styles.controls}>
-      <KarmaCounter count={karmaCount}/>
-      { isMediaMobile && <Comments btnClassName={styles.actionButton} text={commentsCount} textHide={false}/>}
-      { isMediaMobile && <Actions /> }
-    </div>
-  );
+    const {commentsCount, karmaCount} = props;
+    let [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
+    return (
+        <div className={styles.controls}>
+            <KarmaCounter count={karmaCount}/>
+            {isMediaMobile && <Comments btnClassName={styles.actionButton} text={commentsCount} textHide={false}/>}
+            {isMediaMobile && <Actions/>}
+        </div>
+    );
 }

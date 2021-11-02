@@ -5,34 +5,36 @@ import {PostsRequestAction} from "../actions/postActions/postsRequest";
 import {PostsRequestErrorAction} from "../actions/postActions/postsRequestGetError";
 import {SetPostDataAction} from "../actions/postActions/setPostData";
 import {IPostData} from "../../hooks/usePostsData";
+import {merge} from "ramda";
 
 export interface IPostState {
     loading: boolean
     postsData: IPostData[]
     error: string
+    after: string;
 }
+
 type PostActions = PostsRequestAction | PostsRequestErrorAction | SetPostDataAction;
 
 
-export const postReducer: Reducer<IPostState, PostActions> = (state = useSelector<IInitState, IPostState>( state => state.posts), action) => {
+export const postReducer: Reducer<IPostState, PostActions> = (state = useSelector<IInitState, IPostState>(state => state.posts), action) => {
     switch (action.type) {
         case "SET_POSTS_DATA":
-            return {
-                ...state,
-                loading: true
-            }
+            return merge(state, {loading: true})
+
         case "SET_POSTS_DATA_SUCCESS":
-            return {
-                ...state,
+
+            return merge(state, {
                 loading: false,
-                postsData: action.payload
-            }
+                postsData: [...state.postsData, ...action.payload.postData],
+                after: action.payload.after
+            })
+
         case "SET_POSTS_DATA_FAILURE":
-            return {
-                ...state,
+            return merge(state, {
                 loading: false,
                 error: action.error
-            }
+            })
         default:
             return state;
     }

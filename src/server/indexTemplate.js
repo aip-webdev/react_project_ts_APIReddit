@@ -12,7 +12,7 @@ export const indexTemplate = ( content, token ) =>`
     </script>
     <body>
         <div id="react__root">${content}</div>
-        <div id="dropdown__root" ></div>
+        <div id="loading__root" ></div>
         <div id="modal__root"></div>
     </body>
     </html>

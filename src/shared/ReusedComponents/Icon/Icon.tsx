@@ -45,8 +45,9 @@ export function Icon(props: IIconProps) {
     const {width, height, vbWidth = width, vbHeight = height, type, pathFill = 'white'} = props;
 
     return (
-      <svg width={width} height={height} viewBox={`0 0 ${vbWidth} ${vbHeight}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d={type} fill={pathFill}/>
-      </svg>
-  );
+        <svg width={width} height={height} viewBox={`0 0 ${vbWidth} ${vbHeight}`} fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d={type} fill={pathFill}/>
+        </svg>
+    );
 }

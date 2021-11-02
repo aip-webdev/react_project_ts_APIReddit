@@ -4,31 +4,32 @@ import {preventDefault} from "../../../../../utils/react/preventDefault";
 import {stopPropagation} from "../../../../../utils/react/stopPropagation";
 
 interface ICommentReplyProps {
-  onClose: () => void;
-  postAuthor: string;
+    onClose: () => void;
+    postAuthor: string;
 }
 
-export function CommentReplyFormUncontrolled({ onClose, postAuthor}: ICommentReplyProps) {
-  let ref = useRef<HTMLTextAreaElement>(null);
-  useEffect(() => {
-      if (ref.current?.textContent) {
-          ref.current?.focus();
-          // @ts-ignore
-          ref.current?.selectionStart = ref.current.value.length
-      }
-  }, [ref.current?.textContent])
-  function handleSubmit () {
-    // @ts-ignore
-      ref.current?.value = '';
-    onClose();
-  }
+export function CommentReplyFormUncontrolled({onClose, postAuthor}: ICommentReplyProps) {
+    let ref = useRef<HTMLTextAreaElement>(null);
+    useEffect(() => {
+        if (ref.current) {
+            ref.current?.focus();
+            ref.current.selectionStart = ref.current.value.length
+        }
+    }, [ref.current?.textContent])
 
-  return (
-      <form className={styles.form} onSubmit={preventDefault(stopPropagation(handleSubmit))}>
-        <textarea ref={ref} className={styles.input} defaultValue={`${postAuthor}, `}/>
+    function handleSubmit() {
+        if (ref.current) ref.current.value = '';
+        onClose();
+    }
 
-        <button className={styles.cancelBtn} onClick={preventDefault(stopPropagation(onClose))} type='button'>Отмена</button>
-        <button className={styles.submitBtn} type='submit'>Комментировать</button>
-      </form>
-  );
+    return (
+        <form className={styles.form} onSubmit={preventDefault(stopPropagation(handleSubmit))}>
+            <textarea ref={ref} className={styles.input} defaultValue={`${postAuthor}, `}/>
+
+            <button className={styles.cancelBtn} onClick={preventDefault(stopPropagation(onClose))}
+                    type='button'>Отмена
+            </button>
+            <button className={styles.submitBtn} type='submit'>Комментировать</button>
+        </form>
+    );
 }

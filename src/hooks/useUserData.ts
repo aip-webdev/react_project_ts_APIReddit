@@ -9,14 +9,14 @@ export interface IUserData {
 }
 
 export function useUserData() {
-    const data = useSelector<IInitState, IUserData>( state => state.me.myData);
-    const loading = useSelector<IInitState, boolean>( state => state.me.loading);
-    const token = useSelector<IInitState, string>( state => state.token);
+    const data = useSelector<IInitState, IUserData>(state => state.me.myData);
+    const loading = useSelector<IInitState, boolean>(state => state.me.loading);
+    const token = useSelector<IInitState, string>(state => state.token);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (!token) return;
-            dispatch(meRequestAsync());
+        dispatch(meRequestAsync());
     }, [token]);
     return {data, loading}
 }

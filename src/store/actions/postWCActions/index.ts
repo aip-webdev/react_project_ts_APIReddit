@@ -7,7 +7,7 @@ import {postsWCRequest} from "./postsWithCommentsRequest";
 import {setPostsWCData} from "./setPostWithCommentsData";
 import {IPostWithCommentsData} from "../../../hooks/usePostsWithCommentsData";
 
-export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> =>async (dispatch, getState) => {
+export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => async (dispatch, getState) => {
     let postsWC = getState().postWithComments.postsWCData;
     const createPostData = (comment: any) => {
         let commentData = comment.data;
@@ -30,19 +30,21 @@ export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Ac
     }
 
     dispatch(postsWCRequest());
-    const getWCPosts = async () => await getState().posts.postsData.map((post) => {
-        axios.get(`https://www.reddit.com${post.post_url}.json`)
-            .then((res) => {
-                // @ts-ignore
-              return merge(post, {
-                    comments: res.data[1]?.data?.children?.map(createPostData)
-                });
-            })
-            .then((post: IPostWithCommentsData) => {
-             postsWC.push(post);
-        })
-            .catch(console.log);
+    getState().posts.postsData.map(async (post) => {
+        try {
+            await axios.get(`https://www.reddit.com${post.post_url}.json`)
+                .then((res) => {
+                    return merge(post, {
+                        comments: res.data[1]?.data?.children?.map(createPostData)
+                    });
+                })
+                .then((post: IPostWithCommentsData) => {
+                    postsWC.push(post);
+                })
+                .then(() => dispatch(setPostsWCData(postsWC)))
+        } catch (e) {
+            console.log(e)
+        }
     })
 
-    getWCPosts().then(() => dispatch(setPostsWCData(postsWC)))
 }

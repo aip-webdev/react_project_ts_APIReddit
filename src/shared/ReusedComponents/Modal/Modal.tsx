@@ -4,24 +4,24 @@ import ReactDOM from "react-dom";
 import {useMouseEventAction} from "../../../hooks/useMouseEventAction";
 
 interface IModalProps {
-  children: React.ReactNode;
-  onClose?: () => void;
+    children: React.ReactNode;
+    onClose?: () => void;
 }
 
 export function Modal({children, onClose}: IModalProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  useMouseEventAction({onClose, ref});
+    const ref = useRef<HTMLDivElement>(null);
+    useMouseEventAction({onClose, ref});
 
-  const node = document.querySelector('#modal__root');
-  if (!node) return null;
+    const node = document.querySelector('#modal__root');
+    if (!node) return null;
 
-  return ReactDOM.createPortal((
-      <div className={styles.modalBack}>
-        <div className={styles.modal} ref={ref}>
-          {children}
-        </div>
-      </div>
+    return ReactDOM.createPortal((
+            <div className={styles.modalBack}>
+                <div className={styles.modal} ref={ref}>
+                    {children}
+                </div>
+            </div>
 
-      ), node
-  );
+        ), node
+    );
 }

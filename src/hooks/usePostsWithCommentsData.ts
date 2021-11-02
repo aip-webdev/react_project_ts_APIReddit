@@ -32,9 +32,9 @@ export interface IPostWithCommentsData {
 }
 
 export function usePostsWithCommentsData() {
-    const postsWCData = useSelector<IInitState, IPostWithCommentsData[]>( state => state.postWithComments.postsWCData);
-    const postsData = useSelector<IInitState, IPostData[]>( state => state.posts.postsData);
-    const loading = useSelector<IInitState, boolean>( state => state.postWithComments.loading);
+    const postsWCData = useSelector<IInitState, IPostWithCommentsData[]>(state => state.postWithComments.postsWCData);
+    const postsData = useSelector<IInitState, IPostData[]>(state => state.posts.postsData);
+    const loading = useSelector<IInitState, boolean>(state => state.postWithComments.loading);
     const dispatch = useDispatch();
 
     useEffect(() => {

@@ -9,23 +9,25 @@ import {IInitState} from '../../../store';
 import {IUserData} from '../../../hooks/useUserData';
 
 interface IMetaDataParams {
-  author: string;
-  authorUrl?: string;
-  topicName?: string;
-  publicationTime: Date;
+    author: string;
+    authorUrl?: string;
+    topicName?: string;
+    publicationTime: Date;
 }
 
-export function  MetaData(props: IMetaDataParams) {
+export function MetaData(props: IMetaDataParams) {
     const {author, authorUrl, topicName, publicationTime} = props;
     let [isMediaMobile] = useMediaSize();
-    const { iconImg, name } = useSelector<IInitState, IUserData>( state => state.me.myData);
+    const {iconImg, name} = useSelector<IInitState, IUserData>(state => state.me.myData);
     let avatar = name && author !== `[deleted]` || undefined ? useUserImgData(author)[0] : '';
 
     return (
         <div className={styles.metaData}>
             <div className={styles.userLink}>
-                {name && avatar !== '' && !avatar.includes('styles.redditmedia') && <img className={styles.avatar} src={avatar} alt="avatar"/>}
-                {(!name || avatar.includes('styles.redditmedia')) && <img className={styles.avatar} src={'https://i.redd.it/4qezgmi0x87z.png'} alt="avatar"/>}
+                {name && avatar !== '' && !avatar.includes('styles.redditmedia') &&
+                <img className={styles.avatar} src={avatar} alt="avatar"/>}
+                {(!name || avatar.includes('styles.redditmedia')) &&
+                <img className={styles.avatar} src={'https://i.redd.it/4qezgmi0x87z.png'} alt="avatar"/>}
 
                 <a href={authorUrl} className={styles.userName}>{author}</a>
             </div>
@@ -33,7 +35,7 @@ export function  MetaData(props: IMetaDataParams) {
             <span className={styles.publishedLabel}>{!isMediaMobile && `опубликовано`} </span>
                 {getLongAgoDate(publicationTime)}
             </span>
-            {!isMediaMobile && topicName && <span className={styles.topicName}>{ topicName }</span>}
+            {!isMediaMobile && topicName && <span className={styles.topicName}>{topicName}</span>}
         </div>
     );
 }

@@ -12,14 +12,26 @@ export interface ICardData {
 }
 
 export function Card({post}: ICardData) {
-    const {id, author, author_url, post_url, topic_name, count_comments, count_karma, created, url, self_text, title} = post;
+    const {
+        id,
+        author,
+        author_url,
+        post_url,
+        topic_name,
+        count_comments,
+        count_karma,
+        created,
+        url,
+        self_text,
+        title
+    } = post;
 
     return (
         <li className={styles.card}>
-            <TextContent post={post} />
+            <TextContent post={post}/>
             {isImageUrl(url) && <Preview url={url}/>}
-            <Controls karmaCount={count_karma} commentsCount={count_comments} />
-            <Menu />
+            <Controls karmaCount={count_karma} commentsCount={count_comments}/>
+            <Menu/>
         </li>
     );
 }

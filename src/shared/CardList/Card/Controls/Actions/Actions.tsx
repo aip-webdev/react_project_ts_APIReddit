@@ -5,10 +5,10 @@ import {Save} from "./Save";
 import s from '../controls.scss'
 
 export function Actions() {
-  return (
-    <div className={styles.actions}>
-        <Share btnClassName={s.actionButton} textHide={true} />
-        <Save btnClassName={s.actionButton} textHide={true} />
-    </div>
-  );
+    return (
+        <div className={styles.actions}>
+            <Share btnClassName={s.actionButton} textHide={true}/>
+            <Save btnClassName={s.actionButton} textHide={true}/>
+        </div>
+    );
 }

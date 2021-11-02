@@ -78,40 +78,40 @@ export function Menu() {
     let [list, setList] = useState(actionsList)
     let [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
     const isMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'comments', 'share', 'remove', 'save']);
-    const isNoMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'remove' ]);
-    useEffect(()=> {
-        if(isMediaMobile) {
-            setList(filter( isMobileActions, actionsList));
+    const isNoMobileActions = (action: IAction) => !contains(action.id, ['statistics', 'remove']);
+    useEffect(() => {
+        if (isMediaMobile) {
+            setList(filter(isMobileActions, actionsList));
         } else {
-            setList(filter( isNoMobileActions, actionsList));
+            setList(filter(isNoMobileActions, actionsList));
         }
     }, [isMediaMobile]);
 
-  return (
-    <div className={styles.menu}>
-      <Dropdown
-          button={
-              <button className={styles.menuButton}>
-                  <svg width="5" height="20" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="2.5" cy="2.5" r="2.5" fill="#F3F3F3"/>
-                      <circle cx="2.5" cy="10" r="2.5" fill="#F3F3F3"/>
-                      <circle cx="2.5" cy="17.5" r="2.5" fill="#F3F3F3"/>
-                  </svg>
-              </button>
-          }
-          children={
-              <ul className={styles.menuList}>
-                  {list.map( (action: IAction) => (
-                      <li
-                          className={styles.listLine}
-                          key={action.id}
-                      >
-                          {action.element}
-                      </li>
-                  ))}
-              </ul>
-          }
-      />
-    </div>
-  );
+    return (
+        <div className={styles.menu}>
+            <Dropdown
+                button={
+                    <button className={styles.menuButton}>
+                        <svg width="5" height="20" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2.5" cy="2.5" r="2.5" fill="#F3F3F3"/>
+                            <circle cx="2.5" cy="10" r="2.5" fill="#F3F3F3"/>
+                            <circle cx="2.5" cy="17.5" r="2.5" fill="#F3F3F3"/>
+                        </svg>
+                    </button>
+                }
+                children={
+                    <ul className={styles.menuList}>
+                        {list.map((action: IAction) => (
+                            <li
+                                className={styles.listLine}
+                                key={action.id}
+                            >
+                                {action.element}
+                            </li>
+                        ))}
+                    </ul>
+                }
+            />
+        </div>
+    );
 }

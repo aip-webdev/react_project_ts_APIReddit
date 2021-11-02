@@ -1,9 +1,9 @@
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IInitState} from "../store";
 import {postsRequestAsync} from "../store/actions/postActions";
 
- export interface IPostData {
+export interface IPostData {
     id: string;
     author: string;
     author_url?: string;
@@ -19,16 +19,28 @@ import {postsRequestAsync} from "../store/actions/postActions";
     upvote_ratio?: number;
 }
 
-
-
-export function usePostsData() {
-    const postsData = useSelector<IInitState, IPostData[]>( state => state.posts.postsData);
-    const loading = useSelector<IInitState, boolean>( state => state.posts.loading);
-    const token = useSelector<IInitState, string>( state => state.token);
+export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
+    const postsData = useSelector<IInitState, IPostData[]>(state => state.posts.postsData);
+    const loading = useSelector<IInitState, boolean>(state => state.posts.loading);
+    const after = useSelector<IInitState, string>(state => state.posts.after);
     const dispatch = useDispatch();
     useEffect(() => {
-        if (token) dispatch(postsRequestAsync())
-    }, [token])
-
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && (postsData.length%60 !== 0 || postsData.length === 0) ) {
+                dispatch(postsRequestAsync())
+                console.log('isObserve')
+            }
+        }, {
+            rootMargin: '10px'
+        });
+        if (!!bottomOfList.current) {
+            observer.observe(bottomOfList.current)
+        }
+        return () => {
+            if (!!bottomOfList.current) {
+                observer.unobserve(bottomOfList.current)
+            }
+        }
+    }, [bottomOfList.current, after, postsData])
     return {postsData, loading}
 }

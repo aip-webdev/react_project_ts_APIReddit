@@ -1,28 +1,8 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
+import {App} from "../App.tsx";
+
+window.addEventListener('load', () => {
+    ReactDOM.hydrate(<App/>, document.getElementById('react__root'));
 });
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __importStar(require("react"));
-var ReactDOM = __importStar(require("react-dom"));
-var Header_jsx_1 = require("../shared/Header.tsx");
-window.addEventListener('load', function () {
-    ReactDOM.hydrate(React.createElement(Header_jsx_1.Header, null), document.getElementById('react__root'));
-});
-//# sourceMappingURL=index.js.map

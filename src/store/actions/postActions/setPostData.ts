@@ -5,10 +5,13 @@ import {IPostData} from "../../../hooks/usePostsData";
 
 export type SetPostDataAction = {
     type: typeof SET_POSTS_DATA_SUCCESS;
-    payload: IPostData[];
+    payload: {
+        postData: IPostData[],
+        after: string
+    };
 }
 
-export const setPostsData: ActionCreator<SetPostDataAction> = (postData: IPostData[]) => ({
+export const setPostsData: ActionCreator<SetPostDataAction> = (postData: IPostData[], after: string) => ({
     type: SET_POSTS_DATA_SUCCESS,
-    payload: postData
+    payload: {postData: postData, after: after}
 });

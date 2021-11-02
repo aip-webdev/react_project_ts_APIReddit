@@ -17,7 +17,7 @@ export function PostCommentForm({onChange, onSubmit, name, value}: IPostCommentF
         handleChange(value, ref.current)
     }, [])
 
-    function handleChange (value: string, el: HTMLLabelElement | null) {
+    function handleChange(value: string, el: HTMLLabelElement | null) {
         if (el) {
             name ?
                 (value == '') ? el.hidden = false : el.hidden = true :
@@ -28,7 +28,8 @@ export function PostCommentForm({onChange, onSubmit, name, value}: IPostCommentF
     }
 
     return (
-        <form className={styles.form} onSubmit={preventDefault(stopPropagation((event: FormEvent<HTMLFormElement>) => onSubmit(event)))}>
+        <form className={styles.form}
+              onSubmit={preventDefault(stopPropagation((event: FormEvent<HTMLFormElement>) => onSubmit(event)))}>
             <textarea className={styles.input}
                       value={value}
                       onChange={(event) => handleChange(event.target.value, ref.current)}
@@ -38,9 +39,9 @@ export function PostCommentForm({onChange, onSubmit, name, value}: IPostCommentF
                 <span className={styles.username}>{name}, оставьте ваш комментарий</span>
             </label>
 
-            <CommentFormActions />
+            <CommentFormActions/>
 
             <button className={styles.submitBtn} type='submit'>Комментировать</button>
         </form>
-  );
+    );
 }

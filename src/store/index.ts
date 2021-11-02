@@ -17,9 +17,9 @@ export interface IInitState {
 export const initialState: IInitState = {
     commentText: '',
     token: '',
-    posts: {loading: false, error: '', postsData: []},
+    posts: {loading: false, error: '', postsData: [], after: ''},
     postWithComments: {loading: false, error: '', postsWCData: []},
-    me: { loading: false, error: '', myData: {}}
+    me: {loading: false, error: '', myData: {}}
 }
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

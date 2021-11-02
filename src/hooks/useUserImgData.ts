@@ -6,11 +6,11 @@ import {IInitState} from "../store";
 
 export function useUserImgData(username: string) {
     const [data, setData] = useState('https://i.redd.it/4qezgmi0x87z.png')
-    const token = useSelector<IInitState, string>( state => state.token);
+    const token = useSelector<IInitState, string>(state => state.token);
 
     useEffect(() => {
         axios.get(`https://oauth.reddit.com/user/${username}/about.json`, {
-            headers: { Authorization: `bearer ${token}` }
+            headers: {Authorization: `bearer ${token}`}
         })
             .then((res) => {
                 setData(res.data.data.icon_img);

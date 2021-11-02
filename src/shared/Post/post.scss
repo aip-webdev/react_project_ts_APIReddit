@@ -13,6 +13,7 @@
   overflow-y: scroll;
   @include nice-scroll;
 }
+
 .postContent {
   border-bottom: 1px solid $grayD9;
   padding-bottom: 30px;
@@ -33,7 +34,7 @@
 }
 
 .postTopRight {
-  padding:  0 23px;
+  padding: 0 23px;
 }
 
 .postTitle {

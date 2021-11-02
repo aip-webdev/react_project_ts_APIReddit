@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  background-color: whitesmoke;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: 'Roboto', serif; }
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+a {
+  text-decoration: none; }
+
+ul {
+  list-style: none; }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer; }
+
+.s28 {
+  font-size: 28px;
+  line-height: 33px; }
+
+.s20 {
+  font-size: 20px;
+  line-height: 23px; }
+
+.s16 {
+  font-size: 16px;
+  line-height: 19px; }
+
+.s14 {
+  font-size: 14px;
+  line-height: 16px; }
+
+.s12 {
+  font-size: 12px;
+  line-height: 14px; }
+
+.s10 {
+  font-size: 10px;
+  line-height: 12px; }
+
+.black {
+  color: #333333; }
+
+.orange {
+  color: #CC6633; }
+
+.green {
+  color: #A4CC33; }
+
+.white {
+  color: white; }
+
+.greyF4 {
+  color: whitesmoke; }
+
+.greyF3 {
+  color: #f2f2f2; }
+
+.greyD9 {
+  color: #d9d9d9; }
+
+.greyC4 {
+  color: #c4c4c4; }
+
+.grey99 {
+  color: #999999; }
+
+.grey66 {
+  color: #666666; }
+
+@media all and (min-width: 320px) {
+  .m28 {
+    font-size: 28px;
+    line-height: 33px; }
+
+  .m20 {
+    font-size: 20px;
+    line-height: 23px; }
+
+  .m16 {
+    font-size: 16px;
+    line-height: 19px; }
+
+  .m14 {
+    font-size: 14px;
+    line-height: 16px; }
+
+  .m12 {
+    font-size: 12px;
+    line-height: 14px; }
+
+  .m10 {
+    font-size: 10px;
+    line-height: 12px; } }
+@media all and (min-width: 1024px) {
+  .t28 {
+    font-size: 28px;
+    line-height: 33px; }
+
+  .t20 {
+    font-size: 20px;
+    line-height: 23px; }
+
+  .t16 {
+    font-size: 16px;
+    line-height: 19px; }
+
+  .t14 {
+    font-size: 14px;
+    line-height: 16px; }
+
+  .t12 {
+    font-size: 12px;
+    line-height: 14px; }
+
+  .t10 {
+    font-size: 10px;
+    line-height: 12px; } }
+@media all and (min-width: 1540px) {
+  .d28 {
+    font-size: 28px;
+    line-height: 33px; }
+
+  .d20 {
+    font-size: 20px;
+    line-height: 23px; }
+
+  .d16 {
+    font-size: 16px;
+    line-height: 19px; }
+
+  .d14 {
+    font-size: 14px;
+    line-height: 16px; }
+
+  .d12 {
+    font-size: 12px;
+    line-height: 14px; }
+
+  .d10 {
+    font-size: 10px;
+    line-height: 12px; } }
+
+/*# sourceMappingURL=text.css.map */

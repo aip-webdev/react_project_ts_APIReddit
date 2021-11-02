@@ -9,12 +9,12 @@ interface IRemove {
 }
 
 export function Remove({text = 'Удалить', textHide, btnClassName}: IRemove) {
-  return (
-      <ActionButton
-          className={btnClassName}
-          children={ <Icon type={EIcon.remove} width={10} height={12} /> }
-          text={text}
-          textIsHide={textHide}
-      />
-  );
+    return (
+        <ActionButton
+            className={btnClassName}
+            children={<Icon type={EIcon.remove} width={10} height={12}/>}
+            text={text}
+            textIsHide={textHide}
+        />
+    );
 }

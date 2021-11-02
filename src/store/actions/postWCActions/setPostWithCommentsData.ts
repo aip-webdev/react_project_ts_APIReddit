@@ -2,8 +2,6 @@ import {ActionCreator} from "redux";
 import {SET_POSTS_WC_DATA_SUCCESS} from "../actionTypes";
 import {IPostWithCommentsData} from "../../../hooks/usePostsWithCommentsData";
 
-
-
 export type SetPostWCDataAction = {
     type: typeof SET_POSTS_WC_DATA_SUCCESS;
     payload: IPostWithCommentsData[];

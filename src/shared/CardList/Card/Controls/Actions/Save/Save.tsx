@@ -9,12 +9,12 @@ interface ISave {
 }
 
 export function Save({text = 'Сохранить', textHide, btnClassName}: ISave) {
-  return (
-      <ActionButton
-          className={btnClassName}
-          children={ <Icon type={EIcon.save} width={10} height={10} /> }
-          text={text}
-          textIsHide={textHide}
-      />
-  );
+    return (
+        <ActionButton
+            className={btnClassName}
+            children={<Icon type={EIcon.save} width={10} height={10}/>}
+            text={text}
+            textIsHide={textHide}
+        />
+    );
 }

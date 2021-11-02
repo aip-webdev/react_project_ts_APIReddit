@@ -12,7 +12,7 @@ export function Statistics({text = 'Статистика публикации', 
     return (
         <ActionButton
             className={btnClassName}
-            children={ <Icon type={EIcon.statistics} width={13} height={8} /> }
+            children={<Icon type={EIcon.statistics} width={13} height={8}/>}
             text={text}
             textIsHide={textHide}
         />

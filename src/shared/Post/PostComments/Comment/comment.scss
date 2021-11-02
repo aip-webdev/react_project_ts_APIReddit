@@ -3,12 +3,12 @@
 .commentTop {
   display: flex;
   align-items: center;
-
 }
 
 .commentBottom {
   position: relative;
   padding: 0 0 0 27px;
+
   &:before {
     position: absolute;
     content: "";
@@ -23,7 +23,7 @@
 }
 
 .commentBody {
- a {
+  a {
     color: mediumblue;
     text-decoration: underline;
     padding: 10px 0;

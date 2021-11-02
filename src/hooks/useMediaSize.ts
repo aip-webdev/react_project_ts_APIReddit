@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import {useWindowSize} from "../utils/react/useWindowSize";
 
 export function useMediaSize() {

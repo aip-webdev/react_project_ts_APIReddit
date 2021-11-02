@@ -9,13 +9,13 @@ interface IShare {
     btnClassName?: string;
 }
 
-export function Share({text = 'Поделиться', textHide, btnClassName} :IShare) {
-  return (
-      <ActionButton
-          className={btnClassName}
-          children={ <Icon type={EIcon.share} width={8} height={10} /> }
-          text={text}
-          textIsHide={textHide}
-      />
-  );
+export function Share({text = 'Поделиться', textHide, btnClassName}: IShare) {
+    return (
+        <ActionButton
+            className={btnClassName}
+            children={<Icon type={EIcon.share} width={8} height={10}/>}
+            text={text}
+            textIsHide={textHide}
+        />
+    );
 }

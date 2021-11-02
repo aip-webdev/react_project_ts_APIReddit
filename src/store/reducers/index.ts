@@ -11,9 +11,15 @@ import {SetMyDataAction} from "../actions/meActions/setMyData";
 import {MeRequestGetErrorAction} from "../actions/meActions/meRequestGetError";
 import {Reducer} from "redux";
 import {
-    INIT, ME_REQUEST, ME_REQUEST_FAILURE, ME_REQUEST_SUCCESS,
-    SET_POSTS_DATA, SET_POSTS_DATA_FAILURE,
-    SET_POSTS_DATA_SUCCESS, SET_POSTS_WC_DATA, SET_POSTS_WC_DATA_FAILURE, SET_POSTS_WC_DATA_SUCCESS,
+    ME_REQUEST,
+    ME_REQUEST_FAILURE,
+    ME_REQUEST_SUCCESS,
+    SET_POSTS_DATA,
+    SET_POSTS_DATA_FAILURE,
+    SET_POSTS_DATA_SUCCESS,
+    SET_POSTS_WC_DATA,
+    SET_POSTS_WC_DATA_FAILURE,
+    SET_POSTS_WC_DATA_SUCCESS,
     SET_TOKEN,
     UPDATE_POST_COMMENT_TEXT
 } from "../actions/actionTypes";
@@ -33,9 +39,9 @@ export type MyAction =
 export const rootReducer: Reducer<IInitState, MyAction> = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_POST_COMMENT_TEXT:
-            return merge(state, { commentText: action.payload })
+            return merge(state, {commentText: action.payload})
         case SET_TOKEN:
-            return merge(state, { token: action.payload })
+            return merge(state, {token: action.payload})
         case SET_POSTS_DATA:
         case SET_POSTS_DATA_SUCCESS:
         case SET_POSTS_DATA_FAILURE:

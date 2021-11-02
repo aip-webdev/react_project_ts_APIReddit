@@ -26,7 +26,7 @@
   }
 
   @include media-tablet {
-    &> svg > circle {
+    & > svg > circle {
       fill: $grayD9;
     }
     transform: rotate(0);
@@ -49,7 +49,8 @@
   font-size: 12px;
   width: 100%;
   z-index: 1000;
-  &> svg > path {
+
+  & > svg > path {
     fill: $gray99;
   }
 }
@@ -67,6 +68,7 @@
   width: 100%;
   padding: 0 20px;
   z-index: 1000;
+
   &:last-child {
     background-color: $grayD9;
     padding: 0;

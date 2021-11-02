@@ -6,24 +6,27 @@ import axios from "axios";
 import {setMyData} from "./setMyData";
 import {meRequestGetError} from "./meRequestGetError";
 
-export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> =>(dispatch, getState ) =>{
+export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => (dispatch, getState) => {
     dispatch(meRequest());
 
-    axios.get('https://oauth.reddit.com/api/v1/me', {
-        headers: { Authorization: `bearer ${getState().token}` }
-    })
-        .then((res) => {
-            const userData = res.data;
-            dispatch(setMyData({
-                name: userData.name,
-                iconImg: userData.icon_img
-            }))
-        })
-        .catch(rej => {
-            console.log(rej)
-            dispatch(meRequestGetError(rej.toString()))
+    (async () => {
+        try {
+            await axios.get('https://oauth.reddit.com/api/v1/me', {
+                headers: {Authorization: `bearer ${getState().token}`}
+            })
+                .then((res) => {
+                    const userData = res.data;
+                    dispatch(setMyData({
+                        name: userData.name,
+                        iconImg: userData.icon_img
+                    }))
+                })
+        } catch (e) {
+            console.log(e)
+            dispatch(meRequestGetError(e.toString()))
             localStorage.removeItem('reddit-token')
-        })
+        }
+    })()
 
 }
 

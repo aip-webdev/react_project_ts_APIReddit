@@ -10,16 +10,16 @@ interface ICommentActionsProps {
 }
 
 export function CommentActions({handleClick}: ICommentActionsProps) {
-  return (
-      <div className={styles.postActions}>
-        <Comments
-            onclick={handleClick}
-            textHide={false}
-            text='Ответить'
-            btnClassName={styles.actionButton}
-        />
-        <Share textHide={false} btnClassName={styles.actionButton}/>
-        <Complain textHide={false} btnClassName={styles.actionButton}/>
-      </div>
-  );
+    return (
+        <div className={styles.postActions}>
+            <Comments
+                onclick={handleClick}
+                textHide={false}
+                text='Ответить'
+                btnClassName={styles.actionButton}
+            />
+            <Share textHide={false} btnClassName={styles.actionButton}/>
+            <Complain textHide={false} btnClassName={styles.actionButton}/>
+        </div>
+    );
 }

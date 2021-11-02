@@ -10,11 +10,11 @@ interface IActionButton {
     onclick?: () => void;
 }
 
-export function ActionButton ({children, text, textIsHide = false, className, onclick, style}: IActionButton) {
-  return (
-      <button className={className} style={style} onClick={onclick}>
-        {children}
-        { !textIsHide && <span className={styles.buttonText}>{text}</span>}
-      </button>
-  );
+export function ActionButton({children, text, textIsHide = false, className, onclick, style}: IActionButton) {
+    return (
+        <button className={className} style={style} onClick={onclick}>
+            {children}
+            {!textIsHide && <span className={styles.buttonText}>{text}</span>}
+        </button>
+    );
 }
