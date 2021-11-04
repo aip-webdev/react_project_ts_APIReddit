@@ -8,7 +8,6 @@ import {meRequestGetError} from "./meRequestGetError";
 
 export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => (dispatch, getState) => {
     dispatch(meRequest());
-
     (async () => {
         try {
             await axios.get('https://oauth.reddit.com/api/v1/me', {

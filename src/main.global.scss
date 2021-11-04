@@ -73,7 +73,7 @@ button {
   }
 }
 
-@mixin nice-scroll {
+@mixin  nice-scroll {
   &::-webkit-scrollbar {
     padding-right: 10px;
     width: 7px;

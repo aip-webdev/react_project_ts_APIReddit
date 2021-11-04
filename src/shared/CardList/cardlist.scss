@@ -3,11 +3,8 @@
 .cardList {
   position: relative;
   @include list-reset;
-  padding-bottom: 5px;
-  @include media-tablet {
-    padding: 40px 0;
-  }
   @include media-desktop {
+    background-color: $white;
     padding-bottom: 5px;
   }
 }
@@ -18,6 +15,12 @@
   font-size: 14px;
   line-height: 50px;
   text-align: center;
-  margin: 10px auto;
-  width: 25%;
+  padding: 0 15px;
+  width: 40%;
+  justify-content: center;
+  margin: 0 30% 0 30%;
+  @include media-tablet {
+    width: 20%;
+    margin: 0 40% 0 40%;
+  }
 }

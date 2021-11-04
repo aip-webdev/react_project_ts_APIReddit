@@ -10,7 +10,7 @@ import {sortingPostList} from "../../utils/lists/sortPostCategory";
 
 export function Header() {
     return (
-        <header className={styles.header}>
+        <header id="js-header" className={styles.header}>
             <div className={styles.headersBlock}>
                 <Mails/>
                 <SearchBlock/>

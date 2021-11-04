@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useWindowSize} from "../utils/react/useWindowSize";
+import {useWindowSize} from "./useWindowSize";
 
 export function useMediaSize() {
     let windowWidth = useWindowSize();
