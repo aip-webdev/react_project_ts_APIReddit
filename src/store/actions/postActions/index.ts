@@ -47,8 +47,7 @@ export const postsRequestAsync = (): ThunkAction<void, IInitState, unknown, Acti
                     dispatch(setPostsData(postDataList, afterKey))
                 })
         } catch (e) {
-            console.log(e)
-            dispatch(postsRequestGetError(e.toString()))
+            dispatch(postsRequestGetError(e))
         }
     })()
 }

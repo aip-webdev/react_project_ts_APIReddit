@@ -1,0 +1,21 @@
+@import "../../../../../../main.global";
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  background-color: $white;
+  font-size: 14px;
+
+  & > svg > path {
+    fill: $gray99;
+  }
+
+  margin-right: 25px;
+}
+
+.postActions {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 12px 0;
+}

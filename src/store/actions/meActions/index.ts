@@ -21,8 +21,7 @@ export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<
                     }))
                 })
         } catch (e) {
-            console.log(e)
-            dispatch(meRequestGetError(e.toString()))
+            dispatch(meRequestGetError(e))
             localStorage.removeItem('reddit-token')
         }
     })()

@@ -1,0 +1,48 @@
+@import "../../../../main.global";
+
+.card {
+  position: relative;
+  background-color: $white;
+  border-radius: 7px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto 20px;
+
+  @include media-tablet {
+    margin-bottom: 40px;
+    padding: 0 40px;
+  }
+
+  @include media-desktop {
+    padding: 20px 45px 20px 72px;
+    margin: 0;
+
+    &:hover, &:focus-within {
+      outline: 1px solid $grayD9;
+      z-index: 100;
+    }
+
+    &:hover h2 a, &:focus-within h2 a {
+      color: $orange;
+    }
+  }
+}
+
+.card > * {
+  flex: 1 1 100%;
+}
+
+.postLink {
+  padding: 0 20px;
+  width: 100%;
+  @include media-tablet {
+    padding: 0;
+    order: 1;
+    margin-top: 10px;
+  }
+  @include media-desktop {
+    &:hover {
+      color: $orange;
+    }
+  }
+}

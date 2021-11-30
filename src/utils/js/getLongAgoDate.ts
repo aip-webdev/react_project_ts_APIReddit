@@ -1,4 +1,4 @@
-import { declOfNum } from "./declOfNumVal";
+import {declOfNum} from "./declOfNumVal";
 
 export const getLongAgoDate = (date: Date) => {
     const currentDate = new Date();
