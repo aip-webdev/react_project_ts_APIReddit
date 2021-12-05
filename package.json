@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Training react project",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development CLIENT_ID=5shB1q3ox9a92w PASSWORD=DuLj8MgRlj_2QynWCXjusfb8gW1pCw node ./bin/dev.js",
     "build": "cross-env NODE_ENV=production CLIENT_ID=5shB1q3ox9a92w PASSWORD=DuLj8MgRlj_2QynWCXjusfb8gW1pCw webpack --config webpack.config.js",
