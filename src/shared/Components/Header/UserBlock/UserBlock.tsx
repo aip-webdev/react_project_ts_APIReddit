@@ -10,7 +10,7 @@ import {EIcon, Icon} from "../../ReusedComponents/Icon";
 export function UserBlock() {
     const PORT = process.env.PORT ?? 3000;
     const IS_PROD = process.env.NODE_ENV !== 'development';
-    let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com/` : `http://localhost:${PORT}/`
+    let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
     const CLIENT_ID = process.env.CLIENT_ID
     const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${CLIENT_ID}&response_type=code&state=random_string&redirect_uri=${URI}/auth&duration=temporary&scope=read submit identity`
 
