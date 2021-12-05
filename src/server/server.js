@@ -10,7 +10,7 @@ import {indexTemplate} from "./indexTemplate";
 
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
-let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
+let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com/` : `http://localhost:${PORT}/`
 const PASSWORD = process.env.PASSWORD;
 const CLIENT_ID = process.env.CLIENT_ID
 const app = express();
