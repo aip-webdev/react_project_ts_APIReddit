@@ -1,8 +1,8 @@
 import {Reducer} from "redux";
 import {IUserData} from "../../hooks/useUserData";
-import {MeRequestAction} from "../actions/meActions/meRequest";
-import {MeRequestGetErrorAction} from "../actions/meActions/meRequestGetError";
-import {SetMyDataAction} from "../actions/meActions/setMyData";
+import {FETCH_MY_DATA, FetchMyDataAction} from "../actions/meActions/fetchMyData";
+import {FETCH_MY_DATA_FAILURE, FetchMyDataErrorAction} from "../actions/meActions/fetchMyDataError";
+import {FETCH_MY_DATA_SUCCESS, SetMyDataAction} from "../actions/meActions/setMyData";
 import {useSelector} from "react-redux";
 import {IInitState} from "../index";
 import {merge} from "ramda";
@@ -13,17 +13,17 @@ export interface IMyState {
     error: string
 }
 
-type MyActions = MeRequestAction | MeRequestGetErrorAction | SetMyDataAction
+type MyActions = FetchMyDataAction | FetchMyDataErrorAction | SetMyDataAction
 
 export const meReducer: Reducer<IMyState, MyActions> = (state = useSelector<IInitState, IMyState>(state => state.me), action) => {
     switch (action.type) {
-        case "ME_REQUEST":
+        case FETCH_MY_DATA:
             return merge(state, {loading: true})
 
-        case "ME_REQUEST_SUCCESS":
+        case FETCH_MY_DATA_SUCCESS:
             return merge(state, {loading: false, myData: action.payload})
 
-        case "ME_REQUEST_FAILURE":
+        case FETCH_MY_DATA_FAILURE:
             return merge(state, {loading: false, error: action.error})
         default:
             return state;

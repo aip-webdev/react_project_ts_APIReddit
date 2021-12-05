@@ -3,8 +3,8 @@ import {IInitState} from "../../index";
 import {Action} from "redux";
 import axios from "axios";
 import {merge} from "ramda";
-import {postsWCRequest} from "./postsWithCommentsRequest";
-import {setPostsWCData} from "./setPostWithCommentsData";
+import {fetchPostsWC} from "./fetchPostsWithComments";
+import {setPostsWC} from "./fetchPostsWithCommentsSuccess";
 import {IPostWithCommentsData} from "../../../hooks/usePostsWithCommentsData";
 
 export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => async (dispatch, getState) => {
@@ -29,7 +29,7 @@ export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Ac
         };
     }
 
-    dispatch(postsWCRequest());
+    dispatch(fetchPostsWC());
     getState().posts.postsData.map(async (post) => {
         try {
             await axios.get(`https://www.reddit.com${post.post_url}.json`)
@@ -41,7 +41,7 @@ export const postsWCRequestAsync = (): ThunkAction<void, IInitState, unknown, Ac
                 .then((post: IPostWithCommentsData) => {
                     postsWC.push(post);
                 })
-                .then(() => dispatch(setPostsWCData(postsWC)))
+                .then(() => dispatch(setPostsWC(postsWC)))
         } catch (e) {
             console.log(e)
         }

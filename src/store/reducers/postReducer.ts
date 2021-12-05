@@ -1,9 +1,9 @@
 import {Reducer} from "redux";
 import {useSelector} from "react-redux";
 import {IInitState} from "../index";
-import {PostsRequestAction} from "../actions/postActions/postsRequest";
-import {PostsRequestErrorAction} from "../actions/postActions/postsRequestGetError";
-import {SetPostDataAction} from "../actions/postActions/setPostData";
+import {FETCH_POSTS, FetchPostsAction} from "../actions/postActions/fetchPosts";
+import {FETCH_POSTS_FAILURE, FetchPostsErrorAction} from "../actions/postActions/fetchPostsError";
+import {FETCH_POSTS_SUCCESS, SetPostsAction} from "../actions/postActions/fetchPostsSuccess";
 import {IPostData} from "../../hooks/usePostsData";
 import {merge} from "ramda";
 
@@ -14,23 +14,22 @@ export interface IPostState {
     after: string;
 }
 
-type PostActions = PostsRequestAction | PostsRequestErrorAction | SetPostDataAction;
+type PostActions = FetchPostsAction | FetchPostsErrorAction | SetPostsAction;
 
 
 export const postReducer: Reducer<IPostState, PostActions> = (state = useSelector<IInitState, IPostState>(state => state.posts), action) => {
     switch (action.type) {
-        case "SET_POSTS_DATA":
+        case FETCH_POSTS:
             return merge(state, {loading: true})
 
-        case "SET_POSTS_DATA_SUCCESS":
-
+        case FETCH_POSTS_SUCCESS:
             return merge(state, {
                 loading: false,
                 postsData: [...state.postsData, ...action.payload.postData],
                 after: action.payload.after
-            })
+            });
 
-        case "SET_POSTS_DATA_FAILURE":
+        case FETCH_POSTS_FAILURE:
             return merge(state, {
                 loading: false,
                 error: action.error

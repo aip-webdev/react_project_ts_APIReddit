@@ -4,9 +4,8 @@ import {Input} from "../../ReusedComponents/Input";
 import {EIcon, Icon} from "../../ReusedComponents/Icon";
 import {useMediaSize} from "../../../../hooks/useMediaSize";
 
-
 export function SearchBlock() {
-    const [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
+    const [isMediaMobile] = useMediaSize();
 
     return (
         <div className={styles.searchBlock}>

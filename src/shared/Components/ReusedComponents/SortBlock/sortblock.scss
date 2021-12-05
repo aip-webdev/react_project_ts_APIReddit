@@ -10,6 +10,7 @@
   padding-bottom: 3px;
   min-width: 100%;
   cursor: pointer;
+
   span {
     display: flex;
     align-items: center;
@@ -71,6 +72,7 @@
     font-size: 20px;
     padding: 5px 20px;
   }
+
   &:last-child {
     border-bottom: none;
   }

@@ -1,27 +1,29 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './modal.scss';
 import ReactDOM from "react-dom";
 import {useMouseEventAction} from "../../../../hooks/useMouseEventAction";
+import {useNavigate} from "react-router-dom";
 
 interface IModalProps {
     children: React.ReactNode;
-    onClose?: () => void;
 }
 
-export function Modal({children, onClose}: IModalProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    useMouseEventAction({onClose, ref});
+export function Modal({children}: IModalProps) {
+    const [node, setNode] = useState<Element>();
+    const ref = useRef(null);
+    const navigate = useNavigate();
+    useEffect(() => {
+         setNode(document.querySelector('#modal__root') ?? undefined);
+    }, [])
 
-    const node = document.querySelector('#modal__root');
+    useMouseEventAction({action: () => navigate(-1), ref})
     if (!node) return null;
-
     return ReactDOM.createPortal((
             <div className={styles.modalBack}>
-                <div className={styles.modal} ref={ref}>
+                <div ref={ref} className={styles.modal}>
                     {children}
                 </div>
             </div>
-
         ), node
     );
 }

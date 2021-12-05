@@ -21,7 +21,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.[tj]sx?$/,
+                test: /\.[tj]sx?$/,
                 exclude: /node_modules/,
                 use: ['ts-loader'],
             },
@@ -48,7 +48,7 @@ module.exports = {
             }
         ],
     },
-    plugins:[new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)})],
+    plugins: [new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)})],
     optimization: {
         minimize: false,
     },

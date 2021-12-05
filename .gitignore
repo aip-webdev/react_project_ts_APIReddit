@@ -1,4 +1,4 @@
 /.idea
 /node_modules/
 events.json
-/src/.sass-cache/
+/src/cache/

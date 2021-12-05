@@ -9,13 +9,16 @@ export function useUserImgData(username: string) {
     const token = useSelector<IInitState, string>(state => state.token);
 
     useEffect(() => {
-        axios.get(`https://oauth.reddit.com/user/${username}/about.json`, {
-            headers: {Authorization: `bearer ${token}`}
-        })
-            .then((res) => {
-                setData(res.data.data.icon_img);
+        if (!token) return;
+        (async () => {
+            await axios.get(`https://oauth.reddit.com/user/${username}/about.json`, {
+                headers: {Authorization: `bearer ${token}`}
             })
-            .catch()
+                .then((res) => {
+                    setData(res.data.data.icon_img);
+                })
+                .catch(console.log)
+        })()
     }, [token])
 
     return [data]

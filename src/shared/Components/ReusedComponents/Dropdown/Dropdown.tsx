@@ -9,7 +9,8 @@ interface IDropdownProps {
     onClose?: () => void;
 }
 
-const NOOP = () => {};
+const NOOP = () => {
+};
 
 export function Dropdown({button, children, isOpen, onClose = NOOP, onOpen = NOOP}: IDropdownProps) {
     const [isDropdownOpen, setIsDropDownOpen] = useState(isOpen);

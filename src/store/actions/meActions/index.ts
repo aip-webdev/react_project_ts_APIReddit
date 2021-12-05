@@ -1,13 +1,14 @@
 import {ThunkAction} from "redux-thunk";
 import {IInitState} from "../../index";
 import {Action} from "redux";
-import {meRequest} from "./meRequest";
+import {fetchMyData} from "./fetchMyData";
 import axios from "axios";
 import {setMyData} from "./setMyData";
-import {meRequestGetError} from "./meRequestGetError";
+import {fetchMyDataError} from "./fetchMyDataError";
 
-export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => (dispatch, getState) => {
-    dispatch(meRequest());
+export const fetchMyDataAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => (dispatch, getState) => {
+    if (!getState().token) return;
+    dispatch(fetchMyData());
     (async () => {
         try {
             await axios.get('https://oauth.reddit.com/api/v1/me', {
@@ -21,7 +22,7 @@ export const meRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<
                     }))
                 })
         } catch (e) {
-            dispatch(meRequestGetError(e))
+            dispatch(fetchMyDataError(e))
             localStorage.removeItem('reddit-token')
         }
     })()

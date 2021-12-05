@@ -1,18 +1,17 @@
 import {ThunkAction} from "redux-thunk";
 import {IInitState} from "../../index";
 import {Action} from "redux";
-
 import axios from "axios";
-import {postRequest} from "./postsRequest";
-import {setPostsData} from "./setPostData";
-import {postsRequestGetError} from "./postsRequestGetError";
+import {fetchPosts} from "./fetchPosts";
+import {setPosts} from "./fetchPostsSuccess";
+import {fetchPostsError} from "./fetchPostsError";
 
 export const postsRequestAsync = (): ThunkAction<void, IInitState, unknown, Action<string>> => (dispatch, getState) => {
     if (getState().posts.loading) return;
-    dispatch(postRequest());
+    dispatch(fetchPosts());
     (async () => {
         try {
-            await axios.get('https://oauth.reddit.com/best.json', {
+            await axios.get(`https://oauth.reddit.com/${getState().postsType}.json`, {
                 headers: {
                     Authorization: `bearer ${getState().token}`,
                 },
@@ -44,10 +43,10 @@ export const postsRequestAsync = (): ThunkAction<void, IInitState, unknown, Acti
                     return {postDataList, afterKey}
                 })
                 .then(({postDataList, afterKey}) => {
-                    dispatch(setPostsData(postDataList, afterKey))
+                    dispatch(setPosts(postDataList, afterKey))
                 })
         } catch (e) {
-            dispatch(postsRequestGetError(e))
+            dispatch(fetchPostsError(e))
         }
     })()
 }

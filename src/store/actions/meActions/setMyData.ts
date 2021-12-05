@@ -1,13 +1,14 @@
 import {ActionCreator} from "redux";
-import {ME_REQUEST_SUCCESS} from "../actionTypes";
 import {IUserData} from "../../../hooks/useUserData";
 
+export const FETCH_MY_DATA_SUCCESS = 'FETCH_MY_DATA_SUCCESS';
+
 export type SetMyDataAction = {
-    type: typeof ME_REQUEST_SUCCESS;
+    type: typeof FETCH_MY_DATA_SUCCESS;
     payload: IUserData;
 }
 
 export const setMyData: ActionCreator<SetMyDataAction> = (userData: IUserData) => ({
-    type: ME_REQUEST_SUCCESS,
+    type: FETCH_MY_DATA_SUCCESS,
     payload: userData
 });

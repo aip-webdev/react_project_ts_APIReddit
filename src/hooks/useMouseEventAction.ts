@@ -1,21 +1,16 @@
-import React, {useEffect} from "react";
+import React from "react";
+import {useEventListenerAction} from "./useEventListenerAction";
 
 interface IUseMountEventActionProps {
-    onClose?: () => void
+    action: () => void
     ref: React.RefObject<HTMLElement>
 }
 
-export function useMouseEventAction({onClose, ref} : IUseMountEventActionProps) {
-    useEffect(() => {
-        function handleClick(event: MouseEvent) {
-            if (event.target instanceof Node && !ref.current?.contains(event.target)) {
-                onClose?.()
+export function useMouseEventAction({action, ref}: IUseMountEventActionProps) {
+        useEventListenerAction('click', (e) => {
+            if (e.target instanceof Node && !ref.current?.contains(e.target)) {
+                action()
             }
-        }
-        document.addEventListener('click', handleClick);
-        return () => {
-            document.removeEventListener('click', handleClick);
-        }
-    }, [])
+        }, [])
 }
 

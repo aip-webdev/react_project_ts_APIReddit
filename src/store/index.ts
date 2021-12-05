@@ -10,7 +10,8 @@ export interface IInitState {
     commentText: string;
     token: string;
     posts: IPostState;
-    postWithComments: IPostWithCommentsState
+    postsType: string;
+    postWithComments: IPostWithCommentsState;
     me: IMyState;
 }
 
@@ -18,6 +19,7 @@ export const initialState: IInitState = {
     commentText: '',
     token: '',
     posts: {loading: false, error: '', postsData: [], after: ''},
+    postsType: 'best',
     postWithComments: {loading: false, error: '', postsWCData: []},
     me: {loading: false, error: '', myData: {}}
 }

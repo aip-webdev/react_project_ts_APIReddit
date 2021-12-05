@@ -1,0 +1,20 @@
+@import "../../../../../../main.global";
+
+.commentsButton {
+  display: flex;
+  align-items: normal;
+
+  @include media-tablet {
+    display: none;
+  }
+}
+
+.commentsButton * {
+  color: $grayC4;
+}
+
+.commentsNumber {
+  padding: 0 0 0 6px;
+  font-size: 12px;
+  line-height: 14px;
+}

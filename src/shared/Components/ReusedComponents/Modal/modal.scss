@@ -1,0 +1,19 @@
+@import "../../../../main.global";
+
+.modalBack {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+  z-index: 10000;
+  padding-top: 190px;
+}
+
+.modal {
+  background-color: white;
+  padding: 25px;
+  position: relative;
+}

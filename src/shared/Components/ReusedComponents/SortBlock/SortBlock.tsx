@@ -17,6 +17,7 @@ interface ISortBlockProps {
     selectButtonStyle?: string;
     sortListStyle?: string;
     listLineStyle?: string;
+    onSelect: (type: string) => void
 }
 
 export function SortBlock({
@@ -24,7 +25,8 @@ export function SortBlock({
                               selectButtonStyle = styles.selectButton,
                               sortBlockStyle = styles.sortBlock,
                               sortListStyle = styles.sortList,
-                              listLineStyle = styles.listLine
+                              listLineStyle = styles.listLine,
+                              onSelect
                           }: ISortBlockProps) {
 
     const [isDropdownOpen, setIsDropDownOpen] = useState(false);
@@ -40,6 +42,7 @@ export function SortBlock({
 
     useEffect(() => {
         setList(sortList.filter(el => el.id !== select, sortList))
+        onSelect(select)
     }, [select])
 
     return (

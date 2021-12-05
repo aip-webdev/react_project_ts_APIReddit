@@ -1,5 +1,6 @@
 import {ActionCreator} from "redux";
-import {SET_TOKEN} from "../actionTypes";
+
+export const SET_TOKEN = 'SET_TOKEN';
 
 export type SetTokenAction = {
     type: typeof SET_TOKEN;
@@ -8,6 +9,6 @@ export type SetTokenAction = {
 
 export const setToken: ActionCreator<SetTokenAction> = (token: string) => ({
     type: SET_TOKEN,
-    payload: token
+    payload: token.toString()
 });
 

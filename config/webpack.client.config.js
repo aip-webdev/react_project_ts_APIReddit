@@ -1,7 +1,6 @@
 const path = require('path');
-const { HotModuleReplacementPlugin, DefinePlugin } = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const {HotModuleReplacementPlugin, DefinePlugin} = require('webpack');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
@@ -9,7 +8,10 @@ const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 const DEV_PLUGINS = [new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: ['**/dist/client/', '**/dist/server/']
 }), new HotModuleReplacementPlugin()];
-const COMMON_PLUGINS = [new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)})];
+const COMMON_PLUGINS = [
+    new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)}),
+];
+
 function setupDevtool() {
     if (IS_DEV) return 'eval';
     if (IS_PROD) return false;
@@ -19,7 +21,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
-            'react-dom': IS_DEV ? '@hot-loader/react-dom':'react-dom',
+            'react-dom': IS_DEV ? '@hot-loader/react-dom' : 'react-dom',
         }
     },
     mode: NODE_ENV ? NODE_ENV : 'development',
@@ -35,7 +37,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test:/\.[jt]sx?$/,
+                test: /\.[jt]sx?$/,
                 exclude: /node_modules/,
                 use: ['ts-loader'],
             },
@@ -46,10 +48,10 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                          modules: {
-                              mode: 'local',
-                              localIdentName: '[name]__[local]--[hash:base64:5]',
-                          }
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]__[local]--[hash:base64:5]',
+                            }
                         }
                     },
                     'sass-loader',

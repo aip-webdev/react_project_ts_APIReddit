@@ -1,0 +1,88 @@
+@import "../../../../../main.global";
+
+.menu {
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  @include media-tablet {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 65px;
+  }
+}
+
+.menuButton {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg);
+  border-radius: 31px;
+  background: transparent;
+
+  &:active, &:hover {
+    background-color: rgba(51, 51, 51, 0.1);
+  }
+
+  @include media-tablet {
+    & > svg > circle {
+      fill: $grayD9;
+    }
+    transform: rotate(0);
+  }
+
+  @include media-desktop {
+    &:hover {
+      background-color: rgba(51, 51, 51, 0.1);
+    }
+  }
+}
+
+.actionButton {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 37px;
+  background-color: $white;
+  border-bottom: 1px solid #ECECEC;
+  font-size: 12px;
+  width: 100%;
+  z-index: 1000;
+
+  & > svg > path {
+    fill: $gray99;
+  }
+}
+
+.closeBtn {
+  color: $gray66;
+  width: 100%;
+  text-align: center;
+  line-height: 37px;
+}
+
+.listLine {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 1000;
+
+  &:last-child {
+    background-color: $grayD9;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.menuList {
+  background: #FFFFFF;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  min-width: 140px;
+  @include media-tablet {
+    min-width: 157px;
+  }
+
+}

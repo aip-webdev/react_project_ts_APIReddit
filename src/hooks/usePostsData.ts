@@ -23,12 +23,12 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
     const postsData = useSelector<IInitState, IPostData[]>(state => state.posts.postsData);
     const loading = useSelector<IInitState, boolean>(state => state.posts.loading);
     const after = useSelector<IInitState, string>(state => state.posts.after);
+    const type = useSelector<IInitState, string>(state => state.postsType);
     const dispatch = useDispatch();
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting && (postsData.length%60 !== 0 || postsData.length === 0) ) {
+            if (entries[0].isIntersecting && (postsData.length % 60 !== 0 || postsData.length === 0)) {
                 dispatch(postsRequestAsync())
-                console.log('isObserve')
             }
         }, {
             rootMargin: '10px'
@@ -41,6 +41,6 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
                 observer.unobserve(bottomOfList.current)
             }
         }
-    }, [bottomOfList.current, after, postsData])
+    }, [bottomOfList.current, after, postsData, type])
     return {postsData, loading}
 }

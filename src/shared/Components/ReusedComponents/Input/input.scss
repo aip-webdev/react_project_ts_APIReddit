@@ -1,0 +1,14 @@
+@import "../../../../main.global";
+
+.form {
+  .input {
+    border: none;
+    width: 100%;
+    outline: none;
+
+    &::placeholder {
+      color: $grayC4;
+    }
+  }
+}
+

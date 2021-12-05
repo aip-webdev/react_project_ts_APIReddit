@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IInitState} from "../store";
-import {meRequestAsync} from "../store/actions/meActions";
+import {fetchMyDataAsync} from "../store/actions/meActions";
 
 export interface IUserData {
     name?: string;
@@ -15,8 +15,7 @@ export function useUserData() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (!token) return;
-        dispatch(meRequestAsync());
+        dispatch(fetchMyDataAsync());
     }, [token]);
     return {data, loading}
 }

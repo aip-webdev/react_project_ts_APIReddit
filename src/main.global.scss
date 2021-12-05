@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 $black: #333333;
-$orange: #CC6633;
+$orange: #cc6633;
 $green: #A4CC33;
 $whiteLightness: 100%;
 $white: hsl(0, 0%, $whiteLightness);
@@ -22,6 +22,7 @@ html, body {
   line-height: 16px;
   font-family: 'Roboto', serif;
   overflow: hidden;
+
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -62,18 +63,18 @@ button {
 }
 
 @mixin media-tablet {
-  @media all and (min-width: 1024px)  {
+  @media all and (min-width: 1024px) {
     @content
   }
 }
 
 @mixin media-desktop {
-  @media all and (min-width: 1540px)  {
+  @media all and (min-width: 1540px) {
     @content
   }
 }
 
-@mixin  nice-scroll {
+@mixin nice-scroll {
   &::-webkit-scrollbar {
     padding-right: 10px;
     width: 7px;
@@ -83,13 +84,13 @@ button {
 
   &::-webkit-scrollbar-track {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
-    background: $white ;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    background: $white;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.4);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4);
     background-color: $grayD9;
   }
 
