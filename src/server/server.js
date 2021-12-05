@@ -10,7 +10,7 @@ import {indexTemplate} from "./indexTemplate";
 
 const IS_PROD = process.env.NODE_ENV === 'production';
 const PORT = process.env.PORT ?? 3000;
-let URI = process.env.PROD_URI ?? `http://localhost:${PORT}/`
+let URI = process.env.PROD_URI ?? `http://localhost:${PORT}`
 const PASSWORD = process.env.PASSWORD;
 const CLIENT_ID = process.env.CLIENT_ID
 const app = express();
