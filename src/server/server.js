@@ -33,8 +33,8 @@ const reqHandler = async (req, res) => {
 
 app.use('/static', express.static('./dist/client'));
 
-app.get('/auth', async (req, res) => {
-    await axios.post(
+app.get('/auth', (req, res) => {
+    axios.post(
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
@@ -42,8 +42,8 @@ app.get('/auth', async (req, res) => {
             headers: {'Content-type': 'application/x-www-form-urlencoded'}
         }
     )
-        .then(async ({data}) => {
-            await res.send(
+        .then(({data}) => {
+            res.send(
                 indexTemplate(ReactDOMServer.renderToString(
                     <StaticRouter location={req.url}>
                         {App()}
@@ -57,6 +57,5 @@ app.get('/auth', async (req, res) => {
 app.get('*', reqHandler);
 
 app.listen(PORT, () => {
-    /*if (!IS_PROD)*/
-    console.log(`Server started on ${URI} `);
+   !IS_PROD && console.log(`Server started on ${URI} `);
 });
