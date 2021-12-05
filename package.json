@@ -9,8 +9,8 @@
   "scripts": {
     "run":"npm install --ignore-scripts",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=5shB1q3ox9a92w PASSWORD=DuLj8MgRlj_2QynWCXjusfb8gW1pCw node ./bin/dev.js",
-    "build": "cross-env NODE_ENV=production CLIENT_ID=eg9Z07mB7XBZQag_B78K4w URI=https://app-reddit-react.herokuapp.com/ PASSWORD=mT4Fn2GUtcK2jDzLWj0Oj9SsPFAZjg webpack --config webpack.config.js",
-    "start": "cross-env NODE_ENV=production CLIENT_ID=eg9Z07mB7XBZQag_B78K4w URI=https://app-reddit-react.herokuapp.com/ PASSWORD=mT4Fn2GUtcK2jDzLWj0Oj9SsPFAZjg node ./dist/server/server.js"
+    "build": "cross-env NODE_ENV=production CLIENT_ID=eg9Z07mB7XBZQag_B78K4w PROD_URI=https://app-reddit-react.herokuapp.com/ PASSWORD=mT4Fn2GUtcK2jDzLWj0Oj9SsPFAZjg webpack --config webpack.config.js",
+    "start": "cross-env NODE_ENV=production CLIENT_ID=eg9Z07mB7XBZQag_B78K4w PROD_URI=https://app-reddit-react.herokuapp.com/ PASSWORD=mT4Fn2GUtcK2jDzLWj0Oj9SsPFAZjg node ./dist/server/server.js"
   },
   "author": "PetrenkoAI",
   "license": "ISC",
