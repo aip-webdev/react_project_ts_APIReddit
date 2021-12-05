@@ -34,7 +34,7 @@ const reqHandler = async (req, res) => {
 app.use('/static', express.static('./dist/client'));
 
 app.get('/auth', async (req, res) => {
-    await axios.post(
+    axios.post(
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}`,
         {
