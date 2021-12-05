@@ -8,7 +8,7 @@ import helmet from 'helmet';
 import {App} from "../App";
 import {indexTemplate} from "./indexTemplate";
 
-const IS_PROD = process.env.NODE_ENV === 'production';
+const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
 let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
 const PASSWORD = process.env.PASSWORD;
