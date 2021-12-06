@@ -10,7 +10,7 @@ import {indexTemplate} from "./indexTemplate";
 
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
-let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com/auth` : `http://localhost:${PORT}/auth`
+let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
 const PASSWORD = process.env.PASSWORD;
 const CLIENT_ID = process.env.CLIENT_ID
 const app = express();
@@ -36,7 +36,7 @@ app.use('/static', express.static('./dist/client'));
 app.get('/auth', async (req, res) => {
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
-        'grant_type=authorization_code&code='+ req.query.code + '&redirect_uri=' + URI,
+        'grant_type=authorization_code&code='+ req.query.code + '&redirect_uri=' + URI + '/auth',
         {
             auth: {username: CLIENT_ID, password: PASSWORD},
             headers: {'Content-type': 'application/x-www-form-urlencoded'}
