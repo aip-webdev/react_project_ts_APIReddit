@@ -22,7 +22,7 @@ if (IS_PROD) {
 }
 
 const reqHandler = async (req, res) => {
-    await res.send(
+    res.send(
         indexTemplate(ReactDOMServer.renderToString(
             <StaticRouter location={req.url}>
                 {App()}
@@ -42,7 +42,7 @@ app.get('/auth', async (req, res) => {
             headers: {'Content-type': 'application/x-www-form-urlencoded'}
         }
     )
-        .then(({data}) => {
+        .then(async ({data}) => {
             res.send(
                 indexTemplate(ReactDOMServer.renderToString(
                     <StaticRouter location={req.url}>
