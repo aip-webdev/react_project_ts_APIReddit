@@ -32,7 +32,7 @@ const reqHandler = async (req, res) => {
 };
 
 app.use('/static', express.static('./dist/client'));
-
+app.use('/img-src', express.static('./dist/img-src'));
 app.get('/auth', async (req, res) => {
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
