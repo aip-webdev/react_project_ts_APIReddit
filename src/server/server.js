@@ -36,10 +36,10 @@ app.use('/img-src', express.static('./dist/img-src'));
 app.get('/auth', async (req, res) => {
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
-        'grant_type=authorization_code&code='+ req.query.code + '&redirect_uri=' + URI + '/auth',
+        `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
             auth: {username: CLIENT_ID, password: PASSWORD},
-            headers: {'Content-type': 'application/x-www-form-urlencoded'}
+            headers: {'Content-type': 'application/x-www-form-urlencoded', 'Access': 'Access-Control-Allow-Origin'}
         }
     )
         .then(async ({data}) => {
