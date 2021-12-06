@@ -9,7 +9,7 @@ export function useToken() {
 
     useEffect(() => {
         dispatch(saveToken())
-    }, [token]);
+    }, []);
 
     return [token]
 }
