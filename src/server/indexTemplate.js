@@ -8,7 +8,7 @@ export const indexTemplate = (content, token) => `
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Mirror for reddit"
     />
     <link rel="apple-touch-icon" href="/img-src/logo192.png" />
     <!--
@@ -25,7 +25,7 @@ export const indexTemplate = (content, token) => `
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running \`npm run build\`.
     -->
-           <title>Reddit</title>
+           <title>mirror for Reddit</title>
     </head>
     <script src="/static/client.js" type="application/javascript"></script>
     <script >
