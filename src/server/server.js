@@ -7,6 +7,7 @@ import {StaticRouter} from "react-router-dom/server";
 import helmet from 'helmet';
 import {App} from "../App";
 import {indexTemplate} from "./indexTemplate";
+import e from "express";
 
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
@@ -37,11 +38,17 @@ app.get('/auth', async (req, res) => {
         }
     )
         .then(({data}) => {
+            console.log()
             res.send(
                 indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
             );
         })
-        .catch(console.log)
+        .catch((e) => {
+            console.log(e)
+            res.send(
+                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
+            );
+        })
 });
 
 app.get('*', reqHandler);
