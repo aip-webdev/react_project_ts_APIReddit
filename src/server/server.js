@@ -28,7 +28,7 @@ const reqHandler = async (req, res) => {
 app.use('/static', express.static('./dist/client'));
 app.use('/img-src', express.static('./dist/img-src'));
 app.get('/auth', async (req, res) => {
-    const resBody = await axios.post(
+    axios.post(
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
@@ -36,10 +36,14 @@ app.get('/auth', async (req, res) => {
             headers: {'Content-type': 'application/x-www-form-urlencoded'},
         }
     )
-
-    res.send(
-        indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location='/auth'/>), resBody.data['access_token'])
-    );
+        .then(({data}) => {
+            console.log(data)
+            console.log(req.url)
+            res.send(
+                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.url}/>), data['access_token'])
+            );
+        })
+        .catch(console.log)
 });
 
 app.get('*', reqHandler);
