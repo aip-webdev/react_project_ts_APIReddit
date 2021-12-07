@@ -11,15 +11,13 @@ import {indexTemplate} from "./indexTemplate";
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
 let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
-const PASSWORD = process.env.PASSWORD;
-const CLIENT_ID = process.env.CLIENT_ID
 const app = express();
-if (IS_PROD) {
+/*if (IS_PROD) {
     app.use(compression());
     app.use(helmet({
         contentSecurityPolicy: false,
     }))
-}
+}*/
 
 const reqHandler = async (req, res) => {
     res.send(
@@ -38,12 +36,11 @@ app.get('/auth', async (req, res) => {
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
-            auth: {username: CLIENT_ID, password: PASSWORD},
-            headers: {'Content-type': 'application/x-www-form-urlencoded', 'Access': 'Access-Control-Allow-Origin'},
-            decompress:true
+            auth: {username: process.env.CLIENT_ID, password: process.env.PASSWORD},
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
         }
     )
-        .then(async ({data}) => {
+        .then(({data}) => {
             res.send(
                 indexTemplate(ReactDOMServer.renderToString(
                     <StaticRouter location={req.url}>
