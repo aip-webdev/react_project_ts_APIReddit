@@ -20,7 +20,7 @@ export function MetaData(props: IMetaDataParams) {
     const {author, authorUrl, topicName, publicationTime} = props;
     let [isMediaMobile] = useMediaSize();
     const {name} = useSelector<IInitState, IUserData>(state => state.me.myData);
-    let avatar = name && author !== `[deleted]` || undefined ? useUserImgData(author)[0] : '';
+    let avatar = (name && author !== (`[deleted]` || undefined)) ? useUserImgData(author)[0] : ''
 
     return (
         <div className={styles.metaData}>

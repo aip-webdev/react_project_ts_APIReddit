@@ -35,6 +35,7 @@ function AppRouter() {
             <Route path='/' element={<AppComponent/>}>
                 {redirect && <Route index element={<Navigate to='/posts'/>}/>}
                 {redirect && <Route path='/auth' element={<Navigate to='/posts'/>}/>}
+                {redirect && <Route path='/auth?state=somestate&' element={<Navigate to='/posts'/>}/>}
                 <Route path='/posts' element={<PostsPage/>}>
                     <Route path=':postId' element={<Post />}/>
                 </Route>

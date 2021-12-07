@@ -8,14 +8,10 @@ import {EColor} from "../../../../utils/enums/colorEnum";
 import {EIcon, Icon} from "../../ReusedComponents/Icon";
 
 export function UserBlock() {
-    const PORT = process.env.PORT || 3000;
     const IS_PROD = process.env.NODE_ENV !== 'development';
-
-    const redditUrl = IS_PROD ? 'https://www.reddit.com/api/v1/authorize?client_id='+  process.env.CLIENT_ID +
-        '&response_type=code&state=somestate&redirect_uri=https://app-reddit-react.herokuapp.com/auth&duration=temporary&scope=identity read submit' :
-        'https://www.reddit.com/api/v1/authorize?client_id='+  process.env.CLIENT_ID +
-        '&response_type=code&state=somestate&redirect_uri=http://localhost:' + PORT + '/auth&duration=temporary&scope=read submit identity'
-
+    const PORT = process.env.PORT
+    let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT ? PORT : 3000}`
+    const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&state=somestate&redirect_uri=${URI}/auth&duration=temporary&scope=identity read submit`
 
     let [iconSize, setIconSize] = useState(30);
     let [isMediaMobile] = useMediaSize();
