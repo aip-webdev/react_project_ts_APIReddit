@@ -38,7 +38,7 @@ app.get('/auth', async (req, res) => {
     )
         .then(({data}) => {
             res.send(
-                indexTemplate(ReactDOMServer.renderToString(<StaticRouter location={}>{App()}</StaticRouter>), data['access_token'])
+                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location='/auth'/>), data['access_token'])
             );
         })
         .catch(console.log)
