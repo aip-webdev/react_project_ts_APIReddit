@@ -27,14 +27,15 @@ export const indexTemplate = (content, token) => `
     -->
            <title>mirror for Reddit</title>
     </head>
-    <script src="/static/client.js" type="application/javascript"></script>
-    <script >
-        window.__token__ = '${token}'
-    </script>
+   
     <body>
         <div id="react__root">${content}</div>
         <div id="loading__root" ></div>
         <div id="modal__root"></div>
+         <script src="/static/client.js" type="application/javascript"></script>
+    <script >
+        window.__token__ = '${token}'
+    </script>
     </body>
     </html>
 `;
