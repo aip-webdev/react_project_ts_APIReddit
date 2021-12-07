@@ -41,10 +41,10 @@ app.get('/auth', async (req, res) => {
                 indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
             );
         })
-        .catch(({data}) => {
-            console.log(data)
+        .catch((re) => {
+            console.log(re)
             res.send(
-                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
+                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), re)
             );
         })
 });
