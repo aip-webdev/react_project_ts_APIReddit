@@ -32,7 +32,7 @@ app.get('/auth', async (req, res) => {
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
-            auth: {username: process.env.CLIENT_ID, password: process.env.CODE_SECRET},
+            auth: {username: process.env.CLIENT_ID, password: IS_PROD ? 'C_LhUK1tkpGeVQnShgHEHsyPPNCcxg' :process.env.CODE_SECRET},
             headers: {'Content-type': 'application/x-www-form-urlencoded'},
         }
     )
