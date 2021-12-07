@@ -41,12 +41,7 @@ app.get('/auth', async (req, res) => {
                 indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
             );
         })
-        .catch((re) => {
-            console.log(re)
-            res.send(
-                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), re)
-            );
-        })
+        .catch(console.log)
 });
 
 app.get('*', reqHandler);
