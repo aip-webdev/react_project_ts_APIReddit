@@ -12,21 +12,17 @@ const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
 let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
 const app = express();
-/*if (IS_PROD) {
+if (IS_PROD) {
     app.use(compression());
     app.use(helmet({
         contentSecurityPolicy: false,
     }))
-}*/
+}
 
 const reqHandler = async (req, res) => {
     res.send(
-        indexTemplate(ReactDOMServer.renderToString(
-            <StaticRouter location={req.url}>
-                {App()}
-            </StaticRouter>
-        ))
-    )
+        indexTemplate(ReactDOMServer.renderToString(<StaticRouter location={req.url}>{App()}</StaticRouter>))
+    );
 };
 
 app.use('/static', express.static('./dist/client'));
@@ -42,12 +38,8 @@ app.get('/auth', async (req, res) => {
     )
         .then(({data}) => {
             res.send(
-                indexTemplate(ReactDOMServer.renderToString(
-                    <StaticRouter location={req.url}>
-                        {App()}
-                    </StaticRouter>
-                ), data['access_token'])
-            )
+                indexTemplate(ReactDOMServer.renderToString(<StaticRouter location={req.url}>{App()}</StaticRouter>), data['access_token'])
+            );
         })
         .catch(console.log)
 });
