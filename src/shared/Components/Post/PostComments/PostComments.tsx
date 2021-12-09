@@ -8,7 +8,7 @@ import {ICommentsData} from "../../../../hooks/usePostsWithCommentsData";
 
 interface IPostCommentsProps {
     comments: ICommentsData[]
-    postLink: string
+    postLink?: string
 }
 
 export function PostComments(props: IPostCommentsProps) {
