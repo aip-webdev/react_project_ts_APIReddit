@@ -11,6 +11,9 @@
   width: 100%;
   overflow: hidden;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   @include nice-scroll;
   @include media-tablet {
     max-height: 60vh;

@@ -16,10 +16,7 @@ import {Loading} from "../ReusedComponents/Loading";
 import {useBodyHeight} from "../../../hooks/useBodyHeight";
 
 const karmaStyle: CSSProperties = {
-    position: 'initial',
-    top: 'initial',
-    transform: 'initial',
-    right: 'initial',
+    float: 'left',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
