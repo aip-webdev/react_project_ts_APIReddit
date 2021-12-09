@@ -31,7 +31,7 @@ export function Post() {
     let {postId} = useParams<"postId">();
     let height = useBodyHeight();
     const [post, setPost] = useState<IPostWithCommentsData | null>();
-    const [postHeight, setPostHeight] = useState('100%')
+    const [postHeight, setPostHeight] = useState(75)
 
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
@@ -45,7 +45,7 @@ export function Post() {
     useEffect(() => {
         if (!!post) {
             let postHead = document.getElementById(`${post.id}`)
-             !!postHead && setPostHeight(`${100 - Math.ceil(postHead.offsetHeight / (height / 100))}vh`)
+             !!postHead && setPostHeight(100 - Math.ceil(postHead.offsetHeight / (height / 100)))
         }
     }, [post])
 
@@ -70,7 +70,7 @@ export function Post() {
                                   publicationTime={post.created}/>
                     </div>
                 </div>
-                <div style={{height: `${postHeight}`}} className={styles.postInfo}>
+                <div style={{height: `${postHeight}vh`}} className={styles.postInfo}>
                     <div className={styles.postContent}>
                         <span className={styles.postText}>{post.self_text}</span>
                         {isImageUrl(post.url) && <img className={styles.postImg} src={post.url} alt="Post image"/>}
