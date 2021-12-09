@@ -8,6 +8,7 @@ import {Complain} from "../../CardList/Card/Controls/Actions/Complain";
 import {Text} from "../../ReusedComponents/Text";
 import {EColor} from "../../../../utils/enums/colorEnum";
 import {declOfNum} from "../../../../utils/js/declOfNumVal";
+import {useMediaSize} from "../../../../hooks/useMediaSize";
 
 interface PostActionsParams {
     upvote_ratio?: number;
@@ -15,16 +16,17 @@ interface PostActionsParams {
 }
 
 export function PostActions({upvote_ratio = 0, num_comments = 0}: PostActionsParams) {
+    const [isMediaMobile] = useMediaSize();
     return (
         <div className={styles.postActions}>
             <Comments
-                textHide={false}
+                textHide={isMediaMobile}
                 text={`${num_comments} ${declOfNum(num_comments, ['комментарий', 'комментария', 'комментариев'])}`}
                 btnClassName={styles.actionButton}/>
-            <Share textHide={false} btnClassName={styles.actionButton}/>
-            <Hide textHide={false} btnClassName={styles.actionButton}/>
-            <Save textHide={false} btnClassName={styles.actionButton}/>
-            <Complain textHide={false} btnClassName={styles.actionButton}/>
+            <Share textHide={isMediaMobile} btnClassName={styles.actionButton}/>
+            <Hide textHide={isMediaMobile} btnClassName={styles.actionButton}/>
+            <Save textHide={isMediaMobile} btnClassName={styles.actionButton}/>
+            <Complain textHide={isMediaMobile} btnClassName={styles.actionButton}/>
 
             <Text size={14} color={EColor.gray99}> {upvote_ratio}% проголосовало </Text>
         </div>
