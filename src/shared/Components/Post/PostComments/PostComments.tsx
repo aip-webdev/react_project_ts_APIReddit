@@ -16,11 +16,12 @@ export function PostComments(props: IPostCommentsProps) {
     return (
         <div>
             <div className={styles.container}>
-                <span>Сортировать по:</span>
+                <span className={styles.preselect}>Сортировать по:</span>
                 <SortBlock
                     onSelect={() => {
                     }}
                     sortList={sortingPostComments}
+                    sortBlockStyle={styles.sortBlock}
                     selectButtonStyle={styles.selectButton}
                     sortListStyle={styles.sortList}
                     listLineStyle={styles.listLine}

@@ -5,6 +5,7 @@
   flex-direction: column;
   height: 100%;
   flex-wrap: nowrap;
+  margin-bottom: 10px;
 
   @include media-tablet {
     flex-direction: row;
