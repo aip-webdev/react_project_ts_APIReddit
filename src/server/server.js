@@ -10,7 +10,7 @@ import {indexTemplate} from "./indexTemplate";
 
 const IS_PROD = process.env.NODE_ENV !== 'development';
 const PORT = process.env.PORT ?? 3000;
-let URI = IS_PROD ? `https://app-reddit-react.herokuapp.com` : `http://localhost:${PORT}`
+let URI = IS_PROD ? process.env.MY_URI : `http://localhost:${PORT}`
 const app = express();
 if (IS_PROD) {
     app.use(compression());
@@ -32,7 +32,7 @@ app.get('/auth', async (req, res) => {
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
         {
-            auth: {username: process.env.CLIENT_ID, password: IS_PROD ? 'C_LhUK1tkpGeVQnShgHEHsyPPNCcxg' :process.env.CODE_SECRET},
+            auth: {username: process.env.CLIENT_ID, password: process.env.CODE_SECRET},
             headers: {'Content-type': 'application/x-www-form-urlencoded'},
         }
     )

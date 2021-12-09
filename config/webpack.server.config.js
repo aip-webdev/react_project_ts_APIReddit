@@ -48,7 +48,11 @@ module.exports = {
             }
         ],
     },
-    plugins: [new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)})],
+    plugins: [new DefinePlugin({
+        'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
+        'process.env.CODE_SECRET': JSON.stringify(process.env.CODE_SECRET),
+        'process.env.MY_URI': JSON.stringify(process.env.MY_URI),
+    })],
     optimization: {
         minimize: false,
     },

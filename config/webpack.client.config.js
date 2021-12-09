@@ -9,7 +9,11 @@ const DEV_PLUGINS = [new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: ['**/dist/client/', '**/dist/server/']
 }), new HotModuleReplacementPlugin()];
 const COMMON_PLUGINS = [
-    new DefinePlugin({'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID)}),
+    new DefinePlugin({
+        'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
+        'process.env.CODE_SECRET': JSON.stringify(process.env.CODE_SECRET),
+        'process.env.MY_URI': JSON.stringify(process.env.MY_URI),
+    }),
 ];
 
 function setupDevtool() {

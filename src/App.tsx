@@ -32,16 +32,18 @@ function AppRouter() {
 
     return (
         <Routes>
+            {redirect &&
             <Route path='/' element={<AppComponent/>}>
-                {redirect && <Route index element={<Navigate to='/posts'/>}/>}
-                {redirect && <Route path='/auth' element={<Navigate to='/posts'/>}/>}
-                {redirect && <Route path='/auth/' element={<Navigate to='/posts'/>}/>}
+                <Route index element={<Navigate to='/posts'/>}/>
+                <Route path='/auth' element={<Navigate to='/posts'/>}/>
+                <Route path='/auth/:query' element={<Navigate to='/posts'/>}/>
                 <Route path='/posts' element={<PostsPage/>}>
                     <Route path=':postId' element={<Post />}/>
                 </Route>
-
             </Route>
-            <Route path='*' element={<NotFoundPage/>}/>
+            }
+            {redirect &&<Route path='*' element={<NotFoundPage/>}/>}
+
         </Routes>)
 }
 
