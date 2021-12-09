@@ -44,7 +44,7 @@ export function Post() {
     }, [postWC])
     useEffect(() => {
         if (!!post) {
-            let postHead = document.getElementById(`${post?.id}`)
+            let postHead = document.getElementById(`${post.id}`)
              !!postHead && setPostHeight(`${100 - Math.ceil(postHead.offsetHeight / (height / 100))}vh`)
         }
     }, [post])
