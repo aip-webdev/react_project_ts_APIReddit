@@ -69,7 +69,7 @@ export function Post() {
 
                     <PostCommentFormContainer/>
 
-                    {post.comments && <PostComments comments={post.comments}/>}
+                    {post.comments && <PostComments comments={post.comments} postLink={post.post_url}/>}
                 </div>
 
                 <button className={styles.closeBtn} type='button' onClick={handleClick}>

@@ -9,7 +9,9 @@
   display: grid;
   place-items: center;
   z-index: 10000;
+  height: max-content;
   @include media-tablet {
+    height: 100%;
     padding-top: 190px;
   }
 }

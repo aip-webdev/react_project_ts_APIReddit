@@ -8,10 +8,11 @@ import {ICommentsData} from "../../../../hooks/usePostsWithCommentsData";
 
 interface IPostCommentsProps {
     comments: ICommentsData[]
+    postLink: string
 }
 
 export function PostComments(props: IPostCommentsProps) {
-    const {comments} = props;
+    const {comments, postLink} = props;
     comments.pop();
     return (
         <div>
@@ -29,7 +30,7 @@ export function PostComments(props: IPostCommentsProps) {
             </div>
             <ul>
                 {(comments.length > 0) && comments.map((comment) => (
-                    <Comment key={`${comment.id}${comments.indexOf(comment)}`} comment={comment}/>
+                    <Comment key={`${comment.id}${comments.indexOf(comment)}`} comment={comment} postLink={postLink}/>
                 ))}
             </ul>
         </div>

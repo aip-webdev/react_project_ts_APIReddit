@@ -6,13 +6,16 @@ import {MetaData} from "../../../ReusedComponents/MetaData";
 import {CommentActions} from "./CommentActions";
 import {CommentReplyForm} from "./CommentReplyForm";
 import {ICommentsData} from "../../../../../hooks/usePostsWithCommentsData";
+import {useMediaSize} from "../../../../../hooks/useMediaSize";
 
 interface ICommentProps {
     comment: ICommentsData | undefined
+    postLink?: string
 }
 
-export function Comment({comment}: ICommentProps) {
+export function Comment({comment, postLink}: ICommentProps) {
     if (!comment) return null;
+    const [isMediaMobile] = useMediaSize();
     const [formIsOpen, setFormIsOpen] = useState(false)
     const {author, author_url, comment_body, created, id, replies} = comment;
     const body = comment_body.replaceAll(`&gt;`, `>`).replaceAll(`&lt;`, `<`).replaceAll(`&amp;`, `&`);
@@ -37,9 +40,9 @@ export function Comment({comment}: ICommentProps) {
                 {formIsOpen &&
                 <CommentReplyForm key={id + getNum()} onClose={() => setFormIsOpen(false)} postAuthor={author}/>}
                 <ul>
-                    {!!replies && replies.map((replyComment) => (
-                        <Comment key={id + getNum()} comment={replyComment}/>
-                    ))}
+                    {isMediaMobile ? <a href={postLink}>...</a> : !!replies && replies.map((replyComment) => (
+                        <Comment key={id+getNum()} comment={replyComment}/>
+                        ))}
                 </ul>
             </div>
         </li>
