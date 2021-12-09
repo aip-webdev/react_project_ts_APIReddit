@@ -29,19 +29,21 @@ const karmaStyle: CSSProperties = {
 export function Post() {
     const navigate = useNavigate();
     let {postId} = useParams<"postId">();
+    let height = useBodyHeight();
     const [post, setPost] = useState<IPostWithCommentsData | null>();
     const [postHeight, setPostHeight] = useState('100%')
+
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
     let postWC = useSelector<IInitState, IPostWithCommentsData>((state) =>
         state.postWithComments.postsWCData.filter((post) =>
             post.id === postId)[0])
+
     useEffect(() => {
         setPost(postWC ?? null)
     }, [postWC])
     useEffect(() => {
         if (!!post) {
-            let height = useBodyHeight();
             let postHead = document.getElementById(`${post?.id}`)
              !!postHead && setPostHeight(`${100 - Math.ceil(postHead.offsetHeight / (height / 100))}vh`)
         }
