@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  align-items: center;
+  align-items: start;
   padding: 13px 0;
   border-bottom: 1px solid #ECECEC;
 }
@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     color: $orange;
+    white-space: nowrap;
     @include media-tablet {
       font-size: 14px;
     }
