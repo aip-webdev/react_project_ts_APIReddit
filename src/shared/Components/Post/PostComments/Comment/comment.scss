@@ -24,15 +24,15 @@
 
 .commentBody {
   .md {
-    overflow: auto;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
+    word-wrap: break-word;
   }
 
   a {
-    color: mediumblue;
+    color: $orange;
     text-decoration: underline;
     padding: 10px 0;
+    width: 100%;
   }
 
   ul {
