@@ -28,7 +28,7 @@ export function PostActions({upvote_ratio = 0, num_comments = 0}: PostActionsPar
             <Save textHide={isMediaMobile} btnClassName={styles.actionButton}/>
             <Complain textHide={isMediaMobile} btnClassName={styles.actionButton}/>
 
-            <Text size={14} color={EColor.gray99}>` ${upvote_ratio}% ${!isMediaMobile && 'проголосовало'}`</Text>
+            <Text size={14} color={EColor.gray99}>` {upvote_ratio}% {!isMediaMobile && 'проголосовало'}`</Text>
         </div>
     );
 }

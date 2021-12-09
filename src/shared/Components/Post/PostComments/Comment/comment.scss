@@ -23,6 +23,12 @@
 }
 
 .commentBody {
+  .md {
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   a {
     color: mediumblue;
     text-decoration: underline;
