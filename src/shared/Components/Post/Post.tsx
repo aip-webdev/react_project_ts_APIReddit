@@ -13,6 +13,7 @@ import {PostCommentFormContainer} from "./PostCommentFormContainer";
 import {PostActions} from "./PostActions";
 import {NotFoundPage} from "../../Pages/NotFoundPage";
 import {Loading} from "../ReusedComponents/Loading";
+import {useBodyHeight} from "../../../hooks/useBodyHeight";
 
 const karmaStyle: CSSProperties = {
     position: 'initial',
@@ -29,6 +30,7 @@ export function Post() {
     const navigate = useNavigate();
     let {postId} = useParams<"postId">();
     const [post, setPost] = useState<IPostWithCommentsData | null>();
+    const [postHeight, setPostHeight] = useState('100%')
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
     let postWC = useSelector<IInitState, IPostWithCommentsData>((state) =>
@@ -37,6 +39,13 @@ export function Post() {
     useEffect(() => {
         setPost(postWC ?? null)
     }, [postWC])
+    useEffect(() => {
+        if (!!post) {
+            let height = useBodyHeight();
+            let postHead = document.getElementById(`${post?.id}`)
+             !!postHead && setPostHeight(`${100 - Math.ceil(postHead.offsetHeight / (height / 100))}vh`)
+        }
+    }, [post])
 
     function handleClick() {
         navigate(-1);
@@ -51,7 +60,7 @@ export function Post() {
             {!post && <Loading/>}
             {!!post &&
             <Modal>
-                <div className={styles.postInfo}>
+                <div id={post.id} className={styles.post}>
                     <KarmaCounter style={karmaStyle} count={post.count_karma}/>
                     <div className={styles.postTopRight}>
                         <h2 className={styles.postTitle}> {post.title} </h2>
@@ -59,7 +68,7 @@ export function Post() {
                                   publicationTime={post.created}/>
                     </div>
                 </div>
-                <div className={styles.post}>
+                <div style={{height: `${postHeight}`}} className={styles.postInfo}>
                     <div className={styles.postContent}>
                         <span className={styles.postText}>{post.self_text}</span>
                         {isImageUrl(post.url) && <img className={styles.postImg} src={post.url} alt="Post image"/>}
