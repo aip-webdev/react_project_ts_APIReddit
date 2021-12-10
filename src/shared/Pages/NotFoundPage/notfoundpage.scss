@@ -17,6 +17,7 @@
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
   opacity: 0.85;
+  line-height: 1.5rem;
   font-size: 4.2rem;
   .layout {
     min-width: 320px;
@@ -53,7 +54,7 @@
     color: #CC6633;
 
     opacity: 1;
-
+    margin-left: 10px;
     &:hover {
 
     }
