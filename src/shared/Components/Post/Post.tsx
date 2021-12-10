@@ -33,11 +33,12 @@ export function Post() {
 
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
-    (async () => {
-        let postwc = await find(propEq('id', postId))(postsWC);
-        setPost(postwc ?? null)
-    })().catch(console.log)
+    let postWC = useSelector<IInitState, any>((state) =>
+        find(propEq('id', postId))(state.postWithComments.postsWCData));
 
+    useEffect(() => {
+        if (postsWC.length%20 === 0) setPost(postWC ?? null)
+    }, postWC)
     useEffect(() => {
         if (!!post) {
             let postHead = document.getElementById(`${post.id}`)
