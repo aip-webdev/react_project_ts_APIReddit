@@ -34,10 +34,9 @@ export function Post() {
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
     (async () => {
-        return find(propEq('id', postId))(postsWC);
-    })().then((postwc) => {
+        let postwc = await find(propEq('id', postId))(postsWC);
         setPost(postwc ?? null)
-    })
+    })().catch(console.log)
 
     useEffect(() => {
         if (!!post) {
