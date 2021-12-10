@@ -14,6 +14,7 @@ import {PostActions} from "./PostActions";
 import {NotFoundPage} from "../../Pages/NotFoundPage";
 import {Loading} from "../ReusedComponents/Loading";
 import {useBodyHeight} from "../../../hooks/useBodyHeight";
+import {find, propEq} from "ramda";
 
 const karmaStyle: CSSProperties = {
     float: 'left',
@@ -27,18 +28,17 @@ export function Post() {
     const navigate = useNavigate();
     let {postId} = useParams<"postId">();
     let height = useBodyHeight();
-    const [post, setPost] = useState<IPostWithCommentsData | null>();
+    const [post, setPost] = useState<any>();
     const [postHeight, setPostHeight] = useState(75)
 
     let postsWC = useSelector<IInitState, IPostWithCommentsData[]>((state) =>
         state.postWithComments.postsWCData);
-    let postWC = useSelector<IInitState, IPostWithCommentsData>((state) =>
-        state.postWithComments.postsWCData.filter((post) =>
-            post.id === postId)[0])
+    (async () => {
+        return find(propEq('id', postId))(postsWC);
+    })().then((postwc) => {
+        setPost(postwc ?? null)
+    })
 
-    useEffect(() => {
-        setPost(postWC ?? null)
-    }, [postWC])
     useEffect(() => {
         if (!!post) {
             let postHead = document.getElementById(`${post.id}`)
@@ -50,7 +50,7 @@ export function Post() {
         navigate(-1);
     }
 
-    if (!post && typeof post === 'object' && postsWC.length % 20 === 0) {
+    if (!post && typeof post === 'object' && postsWC.find(propEq('id', postId))) {
         return (<NotFoundPage/>)
     }
 

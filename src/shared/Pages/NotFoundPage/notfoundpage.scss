@@ -17,13 +17,36 @@
   text-align: center;
   color: rgba(0, 0, 0, 0.7);
   opacity: 0.85;
-  font-size: 6rem;
+  font-size: 4.2rem;
+  .layout {
+    min-width: 320px;
+    max-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+
+    @include media-tablet {
+      font-size: 6rem;
+      min-width: 1024px;
+      max-width: 1024px;
+    }
+
+    @include media-desktop {
+      padding: 60px 0 0 60px;
+      min-width: 1540px;
+      max-width: 1540px;
+    }
+  }
 
 
   .smallText {
     display: block;
-    font-size: 3rem;
+    font-size: 2.1rem;
     margin: 1em;
+    @include media-tablet {
+      font-size: 3rem;
+      min-width: 1024px;
+      max-width: 1024px;
+    }
   }
 
   .homeLink {
