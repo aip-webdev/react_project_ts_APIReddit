@@ -38,7 +38,7 @@ export function Post() {
 
     useEffect(() => {
         if (postsWC.length%20 === 0) setPost(postWC ?? null)
-    }, postWC)
+    },[ postWC])
     useEffect(() => {
         if (!!post) {
             let postHead = document.getElementById(`${post.id}`)
