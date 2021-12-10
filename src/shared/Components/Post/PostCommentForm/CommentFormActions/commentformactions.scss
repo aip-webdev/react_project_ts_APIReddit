@@ -10,7 +10,7 @@
   padding: 0 10px;
   width: 50%;
   overflow: hidden;
-  overflow-x: auto;
+  overflow-x: scroll;
    @include transparent-scroll();
     @include media-tablet {
     padding: 0 90px 0 20px;
