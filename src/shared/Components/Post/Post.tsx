@@ -50,7 +50,7 @@ export function Post() {
         navigate(-1);
     }
 
-    if (!post && typeof post === 'object' && postsWC.length%20 === 0{
+    if (!post && typeof post === 'object' && postsWC.length%20 === 0) {
         return (<NotFoundPage/>)
     }
 
