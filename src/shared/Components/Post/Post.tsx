@@ -37,7 +37,7 @@ export function Post() {
         find(propEq('id', postId))(state.postWithComments.postsWCData));
 
     useEffect(() => {
-        if (postsWC.length%20 === 0) setPost(postWC ?? null)
+        setPost(postWC)
     },[ postWC])
     useEffect(() => {
         if (!!post) {
