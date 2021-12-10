@@ -11,7 +11,7 @@
   width: 100%;
   overflow: hidden;
   overflow-y: scroll;
-
+  @include transparent-scroll;
   @include media-tablet {
     @include nice-scroll;
     max-height: 60vh;
