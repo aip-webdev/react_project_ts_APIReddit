@@ -3,7 +3,7 @@
 .postCommentActions {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-content: center;
   background: $grayD9;
   border-radius: 0 0 3px 3px;
   height: 50px;
@@ -11,9 +11,7 @@
   width: 50%;
   overflow: hidden;
   overflow-x: auto;
-    &::-webkit-scrollbar {
-      width: 0;
-    }
+   @include transparent-scroll();
     @include media-tablet {
     padding: 0 90px 0 20px;
     width: 75%;
