@@ -3704,7 +3704,7 @@ var useMediaSize_1 = __webpack_require__(3);
 function setContentElHeight() {
     var _a = (0, useMediaSize_1.useMediaSize)(), isMediaMobile = _a[0], isMediaTablet = _a[1], isMediaDesktop = _a[2];
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    var errorRate = (0, react_1.useMemo)(function () { return isMediaTablet ? 10 : (isMediaDesktop ? 0 : 5); }, [isMediaDesktop, isMediaTablet, isMediaMobile]);
+    var errorRate = (0, react_1.useMemo)(function () { return isMediaTablet ? 10 : (isMediaDesktop ? 0 : 10); }, [isMediaDesktop, isMediaTablet, isMediaMobile]);
     var height = (0, useBodyHeight_1.useBodyHeight)();
     (0, react_1.useEffect)(function () {
         var headerEl = window.document.getElementById('js-header');

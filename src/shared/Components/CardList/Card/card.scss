@@ -28,8 +28,8 @@
   }
 }
 
-.emptyCard {
-  color: transparent;
+.emptyCard  > * {
+  flex: 1 1 100%;
 }
 
 .card > * {
