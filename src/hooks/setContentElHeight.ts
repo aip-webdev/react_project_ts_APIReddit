@@ -1,4 +1,4 @@
-import {useEffect, useMemo} from 'react';
+import {useEffect, } from 'react';
 import {useBodyHeight} from "./useBodyHeight";
 import {useMediaSize} from "./useMediaSize";
 import {useSelector} from "react-redux";
@@ -6,9 +6,9 @@ import {IInitState} from "../store";
 
 export function setContentElHeight() {
     let loading = useSelector<IInitState, boolean>((state) => state.posts.loading);
-    const [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
+    const [, isMediaTablet, isMediaDesktop] = useMediaSize();
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    let errorRate = useMemo(() => isMediaTablet ? 10 : (isMediaDesktop ? 0 : 5), [isMediaDesktop, isMediaTablet, isMediaMobile]);
+    let errorRate =  isMediaTablet ? 10 : (isMediaDesktop ? 0 : 5)
     let height = useBodyHeight();
 
     useEffect(() => {
@@ -20,6 +20,7 @@ export function setContentElHeight() {
         console.log(headerEl.clientHeight)
         let contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
         contentEl.style.height = `${contentHeight}vh`;
+        console.log(contentEl.clientHeight)
 
-    }, [height, errorRate, loading]);
+    }, [loading]);
 }

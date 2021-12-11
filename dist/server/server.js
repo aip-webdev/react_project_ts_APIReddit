@@ -3701,10 +3701,12 @@ exports.setContentElHeight = void 0;
 var react_1 = __webpack_require__(0);
 var useBodyHeight_1 = __webpack_require__(44);
 var useMediaSize_1 = __webpack_require__(3);
+var react_redux_1 = __webpack_require__(1);
 function setContentElHeight() {
-    var _a = (0, useMediaSize_1.useMediaSize)(), isMediaMobile = _a[0], isMediaTablet = _a[1], isMediaDesktop = _a[2];
+    var loading = (0, react_redux_1.useSelector)(function (state) { return state.posts.loading; });
+    var _a = (0, useMediaSize_1.useMediaSize)(), isMediaTablet = _a[1], isMediaDesktop = _a[2];
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    var errorRate = (0, react_1.useMemo)(function () { return isMediaTablet ? 10 : (isMediaDesktop ? 0 : 15); }, [isMediaDesktop, isMediaTablet, isMediaMobile]);
+    var errorRate = isMediaTablet ? 10 : (isMediaDesktop ? 0 : 5);
     var height = (0, useBodyHeight_1.useBodyHeight)();
     (0, react_1.useEffect)(function () {
         var headerEl = window.document.getElementById('js-header');
@@ -3716,7 +3718,8 @@ function setContentElHeight() {
         console.log(headerEl.clientHeight);
         var contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
         contentEl.style.height = "".concat(contentHeight, "vh");
-    }, [height, errorRate]);
+        console.log(contentEl.clientHeight);
+    }, [loading]);
 }
 exports.setContentElHeight = setContentElHeight;
 
