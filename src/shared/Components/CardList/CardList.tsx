@@ -31,7 +31,14 @@ export function CardList() {
             <ul className={styles.cardList}>
                 {Array.apply(null, Array(20)).map((value: unknown, index: number) =>
                     (loading &&
-                       <Card key={(index*index) + 1} post={postsData[index]} empty={true}/>
+                        <div className={styles.emptyCard} key={(index*index) + 1} >
+                            <div className={styles.emptyImg}/>
+                            <div className={styles.emptyTextBox}>
+                                <span className={styles.emptySpan}/>
+                                <span className={styles.emptySpan}/>
+                                <span className={styles.emptySpan}/>
+                            </div>
+                        </div>
                 ))}
             </ul>
         </>

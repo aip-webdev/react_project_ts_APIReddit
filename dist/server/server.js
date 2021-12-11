@@ -2453,12 +2453,22 @@ function CardList() {
     var _a = (0, usePostsData_1.usePostsData)(bottomOfList), postsData = _a.postsData, loading = _a.loading;
     (0, usePostsWithCommentsData_1.usePostsWithCommentsData)();
     var handleClick = function () { return dispatch((0, postActions_1.postsRequestAsync)()); };
-    return (react_1.default.createElement("ul", { className: cardlist_scss_1.default.cardList },
-        loading && react_1.default.createElement(Loading_1.Loading, null),
-        postsData && postsData.map(function (post) { return (react_1.default.createElement(Card_1.Card, { key: post.id, post: post })); }),
-        postsData.length % 60 === 0 && postsData.length !== 0 &&
-            react_1.default.createElement("button", { className: cardlist_scss_1.default.loadMore, onClick: handleClick }, "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451"),
-        react_1.default.createElement("div", { ref: bottomOfList })));
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement("ul", { className: cardlist_scss_1.default.cardList },
+            loading && react_1.default.createElement(Loading_1.Loading, null),
+            postsData && postsData.map(function (post) { return (react_1.default.createElement(Card_1.Card, { key: post.id, post: post })); }),
+            postsData.length % 60 === 0 && postsData.length !== 0 &&
+                react_1.default.createElement("button", { className: cardlist_scss_1.default.loadMore, onClick: handleClick }, "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u0435\u0449\u0451"),
+            react_1.default.createElement("div", { ref: bottomOfList })),
+        react_1.default.createElement("ul", { className: cardlist_scss_1.default.cardList }, Array.apply(null, Array(20)).map(function (value, index) {
+            return (loading &&
+                react_1.default.createElement("div", { className: cardlist_scss_1.default.emptyCard, key: (index * index) + 1 },
+                    react_1.default.createElement("div", { className: cardlist_scss_1.default.emptyImg }),
+                    react_1.default.createElement("div", { className: cardlist_scss_1.default.emptyTextBox },
+                        react_1.default.createElement("span", { className: cardlist_scss_1.default.emptySpan }),
+                        react_1.default.createElement("span", { className: cardlist_scss_1.default.emptySpan }),
+                        react_1.default.createElement("span", { className: cardlist_scss_1.default.emptySpan }))));
+        }))));
 }
 exports.CardList = CardList;
 
@@ -2472,6 +2482,10 @@ __webpack_require__.r(__webpack_exports__);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = ({
 	"cardList": "cardlist__cardList--2Hx3d",
+	"emptyCard": "cardlist__emptyCard--l-cxP",
+	"emptyImg": "cardlist__emptyImg--fmHNy",
+	"emptySpan": "cardlist__emptySpan--M2++L",
+	"emptyTextBox": "cardlist__emptyTextBox--Rq+3F",
 	"loadMore": "cardlist__loadMore--cDK8b"
 });
 
@@ -2535,6 +2549,7 @@ __webpack_require__.r(__webpack_exports__);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = ({
 	"card": "card__card--Am6jl",
+	"emptyCard": "card__emptyCard--0v-8v",
 	"postLink": "card__postLink--dbEiR"
 });
 
@@ -3685,7 +3700,7 @@ var useMediaSize_1 = __webpack_require__(3);
 function setContentElHeight() {
     var _a = (0, useMediaSize_1.useMediaSize)(), isMediaMobile = _a[0], isMediaTablet = _a[1], isMediaDesktop = _a[2];
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    var errorRate = (0, react_1.useMemo)(function () { return isMediaTablet ? 10 : (isMediaDesktop ? 0 : -5); }, [isMediaDesktop, isMediaTablet, isMediaMobile]);
+    var errorRate = (0, react_1.useMemo)(function () { return isMediaTablet ? 10 : (isMediaDesktop ? 0 : 0); }, [isMediaDesktop, isMediaTablet, isMediaMobile]);
     var height = (0, useBodyHeight_1.useBodyHeight)();
     (0, react_1.useEffect)(function () {
         var headerEl = window.document.getElementById('js-header');

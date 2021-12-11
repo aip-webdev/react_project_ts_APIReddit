@@ -9,10 +9,9 @@ import {IPostData} from "../../../../hooks/usePostsData";
 
 export interface ICardData {
     post: IPostData;
-    empty?: boolean;
 }
 
-export function Card({post, empty = false}: ICardData) {
+export function Card({post}: ICardData) {
     const {
         count_comments,
         count_karma,
@@ -20,7 +19,7 @@ export function Card({post, empty = false}: ICardData) {
     }: IPostData = post;
 
     return (
-        <li className={!empty ? styles.card : styles.emptyCard}>
+        <li className={styles.card}>
             <TextContent post={post}/>
             {isImageUrl(url) && <Preview url={url}/>}
             <Controls karmaCount={count_karma} commentsCount={count_comments}/>
