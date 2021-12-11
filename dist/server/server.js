@@ -3415,7 +3415,7 @@ function usePostsData(bottomOfList) {
                 dispatch((0, postActions_1.postsRequestAsync)());
             }
         }, {
-            rootMargin: '10px'
+            rootMargin: '40px'
         });
         if (!!bottomOfList.current) {
             observer.observe(bottomOfList.current);
