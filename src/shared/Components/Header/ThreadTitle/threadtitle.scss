@@ -6,6 +6,7 @@
   font-size: 20px;
   line-height: 23px;
   margin: 0 0 15px;
+  white-space: nowrap;
 
   @include media-tablet {
     padding: 0;

@@ -13,7 +13,6 @@ import {PostCommentFormContainer} from "./PostCommentFormContainer";
 import {PostActions} from "./PostActions";
 import {NotFoundPage} from "../../Pages/NotFoundPage";
 import {Loading} from "../ReusedComponents/Loading";
-import {useBodyHeight} from "../../../hooks/useBodyHeight";
 import {find, propEq} from "ramda";
 
 const karmaStyle: CSSProperties = {
@@ -27,7 +26,6 @@ const karmaStyle: CSSProperties = {
 export function Post() {
     const navigate = useNavigate();
     let {postId} = useParams<"postId">();
-    let height = useBodyHeight();
     const [post, setPost] = useState<any>();
     const [postHeight, setPostHeight] = useState(75)
 
@@ -42,7 +40,7 @@ export function Post() {
     useEffect(() => {
         if (!!post) {
             let postHead = document.getElementById(`${post.id}`)
-             !!postHead && setPostHeight(100 - Math.ceil(postHead.offsetHeight / (height / 100)))
+             !!postHead && setPostHeight(100 - Math.ceil(postHead.offsetHeight / (window.document.documentElement.offsetHeight / 100)))
         }
     }, [post])
 
