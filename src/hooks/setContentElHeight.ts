@@ -5,7 +5,7 @@ import {useMediaSize} from "./useMediaSize";
 export function setContentElHeight() {
     const [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    let errorRate = useMemo(() => isMediaTablet ? 10 : (isMediaDesktop ? 0 : 10), [isMediaDesktop, isMediaTablet, isMediaMobile]);
+    let errorRate = useMemo(() => isMediaTablet ? 10 : (isMediaDesktop ? 0 : 15), [isMediaDesktop, isMediaTablet, isMediaMobile]);
     let height = useBodyHeight();
 
     useEffect(() => {
