@@ -13,7 +13,7 @@ export function setContentElHeight() {
         let contentEl = window.document.getElementById('js-content');
         if (!headerEl || !contentEl) return;
 
-        let contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
+        let contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100));
         contentEl.style.height = `${contentHeight}vh`;
 
     }, [height, errorRate]);

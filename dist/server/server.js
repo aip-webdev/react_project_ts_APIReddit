@@ -3692,7 +3692,7 @@ function setContentElHeight() {
         var contentEl = window.document.getElementById('js-content');
         if (!headerEl || !contentEl)
             return;
-        var contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
+        var contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100));
         contentEl.style.height = "".concat(contentHeight, "vh");
     }, [height, errorRate]);
 }
