@@ -45,9 +45,12 @@
 
 .emptySpan {
   background-color: $grayD9;
-  height: 20px;
+  height: 10px;
   width: 100%;
   margin-bottom: 10px;
+  @include media-tablet {
+    height: 20px;
+  }
 }
 
 .emptyTextBox {
