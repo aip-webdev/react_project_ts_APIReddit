@@ -20,6 +20,7 @@ export function setContentElHeight() {
         console.log(headerEl.clientHeight)
         let contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
         contentEl.style.height = `${contentHeight}vh`;
+        console.log(Math.ceil(headerEl.offsetHeight / (height / 100)))
         console.log(contentEl.clientHeight)
 
     }, [loading]);

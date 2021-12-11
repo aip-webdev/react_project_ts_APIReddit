@@ -3718,6 +3718,7 @@ function setContentElHeight() {
         console.log(headerEl.clientHeight);
         var contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
         contentEl.style.height = "".concat(contentHeight, "vh");
+        console.log(Math.ceil(headerEl.offsetHeight / (height / 100)));
         console.log(contentEl.clientHeight);
     }, [loading]);
 }
