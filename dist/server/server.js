@@ -2143,7 +2143,7 @@ exports.ThreadTitle = void 0;
 var react_1 = __importDefault(__webpack_require__(0));
 var threadtitle_scss_1 = __importDefault(__webpack_require__(90));
 function ThreadTitle() {
-    return (react_1.default.createElement("h1", { className: threadtitle_scss_1.default.threadTitle }, "Header"));
+    return (react_1.default.createElement("h1", { className: threadtitle_scss_1.default.threadTitle }, "Reddit's mirror"));
 }
 exports.ThreadTitle = ThreadTitle;
 
@@ -3711,6 +3711,9 @@ function setContentElHeight() {
         var contentEl = window.document.getElementById('js-content');
         if (!headerEl || !contentEl)
             return;
+        console.log(height);
+        console.log(headerEl.offsetHeight);
+        console.log(headerEl.clientHeight);
         var contentHeight = 100 - Math.ceil(headerEl.offsetHeight / (height / 100)) - errorRate;
         contentEl.style.height = "".concat(contentHeight, "vh");
     }, [height, errorRate]);
