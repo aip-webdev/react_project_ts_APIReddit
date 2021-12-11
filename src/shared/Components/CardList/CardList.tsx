@@ -17,15 +17,23 @@ export function CardList() {
     const handleClick = () => dispatch(postsRequestAsync());
 
     return (
-        <ul className={styles.cardList}>
-            {loading && <Loading/>}
-            {postsData && postsData.map((post) => (
-                <Card key={post.id} post={post}/>
-            ))}
-            {postsData.length % 60 === 0 && postsData.length !== 0 &&
-            <button className={styles.loadMore} onClick={handleClick}>Загрузить ещё</button>
-            }
-            <div ref={bottomOfList}/>
-        </ul>
+        <>
+            <ul className={styles.cardList}>
+                {loading && <Loading/>}
+                {postsData && postsData.map((post) => (
+                    <Card key={post.id} post={post}/>
+                ))}
+                {postsData.length % 60 === 0 && postsData.length !== 0 &&
+                <button className={styles.loadMore} onClick={handleClick}>Загрузить ещё</button>
+                }
+                <div ref={bottomOfList}/>
+            </ul>
+            <ul className={styles.cardList}>
+                {Array.apply(null, Array(20)).map((value: unknown, index: number) =>
+                    (loading &&
+                       <Card key={(index*index) + 1} post={postsData[index]} empty={true}/>
+                ))}
+            </ul>
+        </>
     );
 }
