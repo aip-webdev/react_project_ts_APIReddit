@@ -2504,7 +2504,7 @@ function CardList() {
             react_1.default.createElement("div", { ref: bottomOfList })),
         react_1.default.createElement("ul", { className: cardlist_scss_1.default.cardList }, Array.apply(null, Array(20)).map(function (value, index) {
             return (loading &&
-                react_1.default.createElement("div", { className: cardlist_scss_1.default.emptyCard, key: (index * index) + 1 },
+                react_1.default.createElement("li", { className: cardlist_scss_1.default.emptyCard, key: (index * index) + 1 },
                     react_1.default.createElement("div", { className: cardlist_scss_1.default.emptyTextBox },
                         react_1.default.createElement("span", { className: cardlist_scss_1.default.emptySpan }),
                         react_1.default.createElement("span", { className: cardlist_scss_1.default.emptySpan }),
