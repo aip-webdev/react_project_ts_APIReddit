@@ -6,6 +6,8 @@ import {usePostsWithCommentsData} from "../../../hooks/usePostsWithCommentsData"
 import {useDispatch} from "react-redux";
 import {postsRequestAsync} from "../../../store/actions/postActions";
 import {Loading} from "../ReusedComponents/Loading";
+import {Controls} from "./Card/Controls";
+import {Menu} from "./Card/Menu";
 
 export function CardList() {
     let bottomOfList = useRef(null);
@@ -32,12 +34,14 @@ export function CardList() {
                 {Array.apply(null, Array(20)).map((value: unknown, index: number) =>
                     (loading &&
                         <div className={styles.emptyCard} key={(index*index) + 1} >
-                            <div className={styles.emptyImg}/>
                             <div className={styles.emptyTextBox}>
                                 <span className={styles.emptySpan}/>
                                 <span className={styles.emptySpan}/>
                                 <span className={styles.emptySpan}/>
                             </div>
+                            <div className={styles.emptyImg}/>
+                            <Controls karmaCount={0} commentsCount={0}/>
+                            <Menu/>
                         </div>
                 ))}
             </ul>
