@@ -7,7 +7,7 @@ export function setContentElHeight() {
     let loading = useSelector<IInitState, boolean>((state) => state.posts.loading);
     const [isMediaMobile, isMediaTablet, isMediaDesktop] = useMediaSize();
     /*Введем погрешность для разных экранов, чтобы scroll всегда срабатывал*/
-    let errorRate =  isMediaTablet ? 12 : (isMediaDesktop ? 10 : 3)
+    let errorRate =  isMediaTablet ? 12 : (isMediaDesktop ? 10 : 5)
     useEffect(() => {
         let headerEl = window.document.getElementById('js-header');
         let contentEl = window.document.getElementById('js-content');
