@@ -29,12 +29,11 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
     const dispatch = useDispatch();
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-            if (isMediaMobile) return;
             if (entries[0].isIntersecting && (postsData.length % 60 !== 0 || postsData.length === 0)) {
                 dispatch(postsRequestAsync())
             }
         }, {
-            rootMargin: '100px'
+            rootMargin: isMediaMobile ? '300px' : '100px'
         });
         if (!!bottomOfList.current) {
             observer.observe(bottomOfList.current)

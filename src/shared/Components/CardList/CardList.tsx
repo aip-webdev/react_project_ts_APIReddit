@@ -8,12 +8,11 @@ import {postsRequestAsync} from "../../../store/actions/postActions";
 import {Loading} from "../ReusedComponents/Loading";
 import {Controls} from "./Card/Controls";
 import {Menu} from "./Card/Menu";
-import {useMediaSize} from "../../../hooks/useMediaSize";
 
 export function CardList() {
     let bottomOfList = useRef(null);
     const dispatch = useDispatch();
-    const [isMediaMobile] = useMediaSize();
+
     const {postsData, loading} = usePostsData(bottomOfList);
     usePostsWithCommentsData();
 
@@ -26,10 +25,7 @@ export function CardList() {
                 {postsData && postsData.map((post) => (
                     <Card key={post.id} post={post}/>
                 ))}
-                {(
-                    (postsData.length % 60 === 0 && postsData.length !== 0) ||
-                    (postsData.length % 20 === 0 && isMediaMobile)
-                ) &&
+                {postsData.length % 60 === 0 && postsData.length !== 0 &&
                 <button className={styles.loadMore} onClick={handleClick}>Загрузить ещё</button>
                 }
                 <div ref={bottomOfList}/>
@@ -37,7 +33,7 @@ export function CardList() {
             <ul className={styles.cardList}>
                 {Array.apply(null, Array(20)).map((value: unknown, index: number) =>
                     (loading &&
-                        <li className={styles.emptyCard} key={(index * index)+1}>
+                        <li className={styles.emptyCard} key={(index*index) + 1} >
                             <div className={styles.emptyTextBox}>
                                 <span className={styles.emptySpan}/>
                                 <span className={styles.emptySpan}/>
@@ -47,7 +43,7 @@ export function CardList() {
                             <Controls karmaCount={0} commentsCount={0}/>
                             <Menu/>
                         </li>
-                    ))}
+                ))}
             </ul>
         </>
     );
