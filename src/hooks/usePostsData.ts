@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IInitState} from "../store";
 import {postsRequestAsync} from "../store/actions/postActions";
+import {useMediaSize} from "./useMediaSize";
 
 export interface IPostData {
     id: string;
@@ -24,9 +25,11 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
     const loading = useSelector<IInitState, boolean>(state => state.posts.loading);
     const after = useSelector<IInitState, string>(state => state.posts.after);
     const type = useSelector<IInitState, string>(state => state.postsType);
+    const [isMediaMobile] = useMediaSize();
     const dispatch = useDispatch();
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
+            if (isMediaMobile) return;
             if (entries[0].isIntersecting && (postsData.length % 60 !== 0 || postsData.length === 0)) {
                 dispatch(postsRequestAsync())
             }
