@@ -9,9 +9,11 @@ import {ThreadTitle} from "./ThreadTitle";
 import {SortBlock} from "../ReusedComponents/SortBlock";
 import {useDispatch} from "react-redux";
 import {setPostType} from "../../../store/actions/postTypeAction";
+import {useMediaSize} from "../../../hooks/useMediaSize";
 
 export function Header() {
     const dispatch = useDispatch();
+    const [isMediaMobile] = useMediaSize();
     return (
         <header id="js-header" className={styles.header}>
             <div className={styles.headersBlock}>
@@ -19,7 +21,7 @@ export function Header() {
                 <SearchBlock/>
                 <UserBlock/>
             </div>
-            <ThreadTitle/>
+            {!isMediaMobile && <ThreadTitle/>}
             <SortBlock onSelect={(type) => dispatch(setPostType(type))} sortList={sortingPostList}/>
         </header>
     );
