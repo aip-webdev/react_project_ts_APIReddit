@@ -19,7 +19,7 @@ export interface IPostData {
     upvote_ratio?: number;
 }
 
-export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
+export function usePostsData(bottomOfList: React.RefObject<Element>) {
     const postsData = useSelector<IInitState, IPostData[]>(state => state.posts.postsData);
     const loading = useSelector<IInitState, boolean>(state => state.posts.loading);
     const after = useSelector<IInitState, string>(state => state.posts.after);
@@ -36,10 +36,16 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
         });
         if (!!bottomOfList.current) {
             observer.observe(bottomOfList.current)
+        } else if (!!document.getElementById('cardListBottom')) {
+            // @ts-ignore
+            observer.observe(document.getElementById('cardListBottom'))
         }
         return () => {
             if (!!bottomOfList.current) {
                 observer.unobserve(bottomOfList.current)
+            } else if (!!document.getElementById('cardListBottom')) {
+                // @ts-ignore
+                observer.unobserve(document.getElementById('cardListBottom'))
             }
         }
     }, [bottomOfList.current, after, postsData, type])
