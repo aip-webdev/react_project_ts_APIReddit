@@ -31,8 +31,8 @@ export function usePostsData(bottomOfList: React.RefObject<Element>) {
                 dispatch(postsRequestAsync())
             }
         }, {
-            rootMargin: '0px',
-            threshold: .1,
+            rootMargin: '50px',
+            threshold: 0,
         });
         if (!!bottomOfList.current) {
             observer.observe(bottomOfList.current)
