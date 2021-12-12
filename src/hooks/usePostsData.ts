@@ -25,7 +25,6 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
     const loading = useSelector<IInitState, boolean>(state => state.posts.loading);
     const after = useSelector<IInitState, string>(state => state.posts.after);
     const type = useSelector<IInitState, string>(state => state.postsType);
-    const [isMediaMobile] = useMediaSize();
     const dispatch = useDispatch();
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -33,7 +32,7 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
                 dispatch(postsRequestAsync())
             }
         }, {
-            rootMargin: isMediaMobile ? '25%' : '100px',
+            rootMargin: '100px',
             threshold: 0.001
         });
         if (!!bottomOfList.current) {

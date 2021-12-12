@@ -28,7 +28,7 @@ export function CardList() {
                 {postsData.length % 60 === 0 && postsData.length !== 0 &&
                 <button className={styles.loadMore} onClick={handleClick}>Загрузить ещё</button>
                 }
-                <div style={{height: '1px'}} ref={bottomOfList}/>
+                <div style={{height: '10px'}} ref={bottomOfList}/>
             </ul>
             <ul className={styles.cardList}>
                 {Array.apply(null, Array(20)).map((value: unknown, index: number) =>
