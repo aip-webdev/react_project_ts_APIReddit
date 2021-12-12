@@ -33,7 +33,7 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
                 dispatch(postsRequestAsync())
             }
         }, {
-            rootMargin: isMediaMobile ? '10px' : '100px',
+            rootMargin: isMediaMobile ? '25%' : '100px',
             threshold: 0.001
         });
         if (!!bottomOfList.current) {
