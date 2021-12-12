@@ -2,7 +2,6 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {IInitState} from "../store";
 import {postsRequestAsync} from "../store/actions/postActions";
-import {useMediaSize} from "./useMediaSize";
 
 export interface IPostData {
     id: string;
@@ -32,8 +31,7 @@ export function usePostsData(bottomOfList: React.RefObject<HTMLElement>) {
                 dispatch(postsRequestAsync())
             }
         }, {
-            rootMargin: '100px',
-            threshold: 0.001
+            rootMargin: '10vh',
         });
         if (!!bottomOfList.current) {
             observer.observe(bottomOfList.current)
