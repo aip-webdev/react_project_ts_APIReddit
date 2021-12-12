@@ -29,6 +29,8 @@ export function usePostsData(bottomOfList: React.RefObject<Element>) {
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && (postsData.length % 60 !== 0 || postsData.length === 0)) {
                 dispatch(postsRequestAsync())
+                console.log('observed')
+                console.log(bottomOfList?.current?.parentElement?.scrollHeight)
             }
         }, {
             rootMargin: '50px',
