@@ -1,14 +1,12 @@
 import React from 'react';
+import s from '../controls.scss';
 import styles from './actions.scss';
-import {Share} from "./Share";
-import {Save} from "./Save";
-import s from '../controls.scss'
+import { Save } from './Save';
+import { Share } from './Share';
 
-export function Actions() {
-    return (
-        <div className={styles.actions}>
-            <Share btnClassName={s.actionButton} textHide={true}/>
-            <Save btnClassName={s.actionButton} textHide={true}/>
-        </div>
-    );
-}
+export const Actions = React.memo((): JSX.Element =>
+	<div className={styles.actions}>
+		<Share btnClassName={s.actionButton} textHide={true} />
+		<Save btnClassName={s.actionButton} textHide={true} />
+	</div>)
+

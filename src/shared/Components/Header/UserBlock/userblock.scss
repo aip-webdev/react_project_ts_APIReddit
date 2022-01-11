@@ -1,4 +1,4 @@
-@import "../../../../main.global";
+@import '../../../../main.global';
 
 .userBox {
   cursor: pointer;
@@ -51,6 +51,5 @@
 
   @include media-desktop {
     display: flex;
-
   }
 }

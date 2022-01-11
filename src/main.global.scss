@@ -2,7 +2,7 @@
 
 $black: #333333;
 $orange: #cc6633;
-$green: #A4CC33;
+$green: #a4cc33;
 $whiteLightness: 100%;
 $white: hsl(0, 0%, $whiteLightness);
 $grayF4: hsl(0, 0%, $whiteLightness - 4%);
@@ -13,7 +13,8 @@ $gray99: hsl(0, 0%, ($whiteLightness - 40%));
 $gray66: hsl(0, 0%, ($whiteLightness - 60%));
 $gray33: hsl(0, 0%, ($whiteLightness - 80%));
 
-html, body {
+html,
+body {
   height: 100%;
   padding: 0;
   margin: 0;
@@ -59,19 +60,19 @@ button {
 
 @mixin media-mobile {
   @media all and (min-width: 320px), all and (min-device-width: 320px) {
-    @content
+    @content;
   }
 }
 
 @mixin media-tablet {
   @media all and (min-width: 1024px), all and (min-device-width: 1024px) {
-    @content
+    @content;
   }
 }
 
 @mixin media-desktop {
-  @media all and ( min-width: 1540px), all and ( min-device-width: 1540px) {
-    @content
+  @media all and (min-width: 1540px), all and (min-device-width: 1540px) {
+    @content;
   }
 }
 
@@ -92,7 +93,7 @@ button {
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    background-color:transparent;
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -117,7 +118,7 @@ button {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
     background-color: $grayD9;
   }
 

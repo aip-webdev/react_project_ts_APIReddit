@@ -1,17 +1,35 @@
-import {useEffect, useState} from 'react';
-import {useWindowSize} from "./useWindowSize";
+import { useEffect, useState } from 'react';
+import { useWindowSize } from './useWindowSize';
 
-export function useMediaSize() {
-    let {width} = useWindowSize();
-    const [isMediaMobile, setIsMediaMobile] = useState(true);
-    const [isMediaTablet, setIsMediaTablet] = useState(true);
-    const [isMediaDesktop, setIsMediaDesktop] = useState(true);
+export const useMediaSize = (): boolean[] => {
+  const { width } = useWindowSize();
+  const [mediaPoint, setMediaPoint] = useState({
+    isMediaMobile: true,
+    isMediaTablet: true,
+    isMediaDesktop: true,
+  })
+  let {isMediaMobile, isMediaTablet, isMediaDesktop} = mediaPoint
+  useEffect(() => {
+    if (width < 1024) {
+      setMediaPoint({
+        isMediaMobile: true,
+        isMediaTablet: false,
+        isMediaDesktop: false,
+      })
+    } else if (width > 1024 && width < 1400) {
+      setMediaPoint({
+        isMediaMobile: false,
+        isMediaTablet: true,
+        isMediaDesktop: false,
+      })
+    } else {
+      setMediaPoint({
+        isMediaMobile: false,
+        isMediaTablet: false,
+        isMediaDesktop: true,
+      })
+    }
+  }, [width])
 
-    useEffect(() => {
-        width < 1024 ? setIsMediaMobile(true) : setIsMediaMobile(false);
-        ((width > 1024) && (width < 1400)) ? setIsMediaTablet(true) : setIsMediaTablet(false);
-        width > 1400 ? setIsMediaDesktop(true) : setIsMediaDesktop(false);
-    }, [width]);
-
-    return [isMediaMobile, isMediaTablet, isMediaDesktop];
+  return [isMediaMobile, isMediaTablet, isMediaDesktop]
 }

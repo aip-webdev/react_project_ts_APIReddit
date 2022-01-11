@@ -1,1 +1,1 @@
-export * from './Complain';
+export * from './Complain'

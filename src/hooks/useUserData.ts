@@ -1,21 +1,23 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {IInitState} from "../store";
-import {fetchMyDataAsync} from "../store/actions/meActions";
+import { useEffect } from 'react';
+import shallow from 'zustand/shallow';
+import useStore from '../store';
 
 export interface IUserData {
-    name?: string;
-    iconImg?: string;
+	name?: string
+	iconImg?: string
 }
 
-export function useUserData() {
-    const data = useSelector<IInitState, IUserData>(state => state.me.myData);
-    const loading = useSelector<IInitState, boolean>(state => state.me.loading);
-    const token = useSelector<IInitState, string>(state => state.token);
-    const dispatch = useDispatch();
+export const useUserData = (): {data: IUserData; loading: boolean} => {
+  const {data, loading, token, fetchMyDataAsync} = useStore((state) => ({
+    data: state.me.myData,
+    loading: state.me.loading,
+    token:state.token,
+    fetchMyDataAsync: state.fetchMyDataAsync
+  }), shallow)
 
-    useEffect(() => {
-        dispatch(fetchMyDataAsync());
-    }, [token]);
-    return {data, loading}
+	useEffect(() => {
+		fetchMyDataAsync()
+	}, [token])
+
+	return { data, loading }
 }

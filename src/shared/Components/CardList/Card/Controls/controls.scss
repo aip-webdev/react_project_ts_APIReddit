@@ -1,4 +1,4 @@
-@import "../../../../../main.global";
+@import '../../../../../main.global';
 
 .controls {
   padding: 10px 20px;
@@ -27,7 +27,6 @@
   margin-left: 15px;
   line-height: 20px;
 
-
   @include media-tablet {
     background: transparent;
     width: auto;
@@ -40,7 +39,3 @@
     display: inline;
   }
 }
-
-
-
-

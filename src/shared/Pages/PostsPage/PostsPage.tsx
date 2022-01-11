@@ -1,13 +1,13 @@
 import React from 'react';
-import {CardList} from "../../Components/CardList";
-import {Content} from "../../Components/Content";
-import {Outlet} from "react-router-dom";
+import { Outlet } from 'react-router-dom';
+import { CardList } from '../../Components/CardList';
+import { Content } from '../../Components/Content';
 
 export function PostsPage() {
-    return (
-        <Content>
-            <CardList/>
-            <Outlet/>
-        </Content>
-    );
+	return (
+		<Content>
+			<CardList />
+			<Outlet />
+		</Content>
+	)
 }

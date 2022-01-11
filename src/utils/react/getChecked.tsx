@@ -1,3 +1,3 @@
-import {pickFromSyntheticEvent} from "./pickFromSyntheticEvent";
+import { pickFromSyntheticEvent } from './pickFromSyntheticEvent';
 
-export const getChecked = pickFromSyntheticEvent<HTMLInputElement>()('checked');
+export const getChecked = pickFromSyntheticEvent<HTMLInputElement>()('checked')

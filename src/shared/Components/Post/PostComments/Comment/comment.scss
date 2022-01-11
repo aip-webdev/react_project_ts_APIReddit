@@ -1,4 +1,4 @@
-@import "../../../../../main.global";
+@import '../../../../../main.global';
 
 .commentTop {
   display: flex;
@@ -11,7 +11,7 @@
 
   &:before {
     position: absolute;
-    content: "";
+    content: '';
     width: 3px;
     top: 0;
     bottom: 12px;

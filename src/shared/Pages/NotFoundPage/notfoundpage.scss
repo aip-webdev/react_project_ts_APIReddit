@@ -1,4 +1,4 @@
-@import "../../../main.global";
+@import '../../../main.global';
 
 .pageBox {
   background-color: $grayF4;
@@ -10,7 +10,6 @@
   display: grid;
   place-items: center;
   z-index: 5000;
-
 }
 
 .headText {
@@ -19,24 +18,22 @@
   opacity: 0.85;
   line-height: 3rem;
   font-size: 4.2rem;
-    min-width: 320px;
-    max-width: 320px;
-    height: 100%;
-    margin: 0 auto;
+  min-width: 320px;
+  max-width: 320px;
+  height: 100%;
+  margin: 0 auto;
 
-    @include media-tablet {
-      font-size: 6rem;
-      min-width: 1024px;
-      max-width: 1024px;
-    }
+  @include media-tablet {
+    font-size: 6rem;
+    min-width: 1024px;
+    max-width: 1024px;
+  }
 
-    @include media-desktop {
-      padding: 60px 0 0 60px;
-      min-width: 1540px;
-      max-width: 1540px;
-    }
-
-
+  @include media-desktop {
+    padding: 60px 0 0 60px;
+    min-width: 1540px;
+    max-width: 1540px;
+  }
 
   .smallText {
     display: block;
@@ -50,13 +47,11 @@
   }
 
   .homeLink {
-    color: #CC6633;
+    color: #cc6633;
 
     opacity: 1;
     margin-left: 10px;
     &:hover {
-
     }
   }
 }
-

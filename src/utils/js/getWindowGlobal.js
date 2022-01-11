@@ -1,3 +1,1 @@
-export const getWindowGlobal = () => {
-    return typeof window !== 'undefined' && window
-}
+export const getWindowGlobal = () => typeof window !== 'undefined' && window

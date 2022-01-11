@@ -5,5 +5,5 @@ import {App} from "../App";
 
 const renderMethod = module?.hot ? render : hydrate;
 window.addEventListener('load', () => {
-    renderMethod(<BrowserRouter><App/></BrowserRouter>, document.getElementById('react__root'));
+  renderMethod(<BrowserRouter><App/></BrowserRouter>, document.getElementById('react__root'));
 });

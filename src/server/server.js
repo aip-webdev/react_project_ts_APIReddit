@@ -13,39 +13,39 @@ const PORT = process.env.PORT ?? 3000;
 let URI = IS_PROD ? process.env.MY_URI : `http://localhost:${PORT}`
 const app = express();
 if (IS_PROD) {
-    app.use(compression());
-    app.use(helmet({
-        contentSecurityPolicy: false,
-    }))
+  app.use(compression());
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }))
 }
 
 const reqHandler = async (req, res) => {
-    res.send(
-        indexTemplate(ReactDOMServer.renderToString(<StaticRouter location={req.url}>{App()}</StaticRouter>))
-    );
+  res.send(
+    indexTemplate(ReactDOMServer.renderToString(<StaticRouter location={req.url}>{App()}</StaticRouter>))
+  );
 };
 
 app.use('/static', express.static('./dist/client'));
 app.use('/img-src', express.static('./dist/img-src'));
 app.get('/auth', async (req, res) => {
-    axios.post(
-        'https://www.reddit.com/api/v1/access_token',
-        `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
-        {
-            auth: {username: process.env.CLIENT_ID, password: process.env.CODE_SECRET},
-            headers: {'Content-type': 'application/x-www-form-urlencoded'},
-        }
-    )
-        .then(({data}) => {
-            res.send(
-                indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
-            );
-        })
-        .catch(console.log)
+  axios.post(
+    'https://www.reddit.com/api/v1/access_token',
+    `grant_type=authorization_code&code=${req.query.code}&redirect_uri=${URI}/auth`,
+    {
+      auth: {username: process.env.CLIENT_ID, password: process.env.CODE_SECRET},
+      headers: {'Content-type': 'application/x-www-form-urlencoded'},
+    }
+  )
+    .then(({data}) => {
+      res.send(
+        indexTemplate(ReactDOMServer.renderToString(<StaticRouter children={App()} location={req.path}/>), data['access_token'])
+      );
+    })
+    .catch(console.log)
 });
 
 app.get('*', reqHandler);
 
 app.listen(PORT, () => {
-   !IS_PROD && console.log(`Server started on ${URI} `);
+  !IS_PROD && console.log(`Server started on ${URI} `);
 });

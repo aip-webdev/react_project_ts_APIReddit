@@ -1,20 +1,22 @@
 import React from 'react';
-import {ActionButton} from "../ActionButton";
-import {EIcon, Icon} from "../../../../../ReusedComponents/Icon";
+import { EIcon, Icon } from '../../../../../ReusedComponents/Icon';
+import { ActionButton } from '../ActionButton';
+
 
 interface IComplain {
-    text?: string;
-    textHide?: boolean;
-    btnClassName?: string;
+	text?: string
+	textHide?: boolean
+	btnClassName?: string
 }
 
-export function Complain({text = 'Пожаловаться', textHide, btnClassName}: IComplain) {
-    return (
-        <ActionButton
-            className={btnClassName}
-            children={<Icon type={EIcon.complain} width={14} height={12}/>}
-            text={text}
-            textIsHide={textHide}
-        />
-    );
-}
+export const Complain = React.memo(
+  ({ text = 'Пожаловаться', textHide, btnClassName }: IComplain): JSX.Element =>
+    <ActionButton
+      className={btnClassName}
+      text={text}
+      textIsHide={textHide}
+    >
+      <Icon type={EIcon.complain} width={14} height={12} />
+    </ActionButton>
+)
+

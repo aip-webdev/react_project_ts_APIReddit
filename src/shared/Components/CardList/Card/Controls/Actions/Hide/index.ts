@@ -1,1 +1,1 @@
-export * from './Hide';
+export * from './Hide'

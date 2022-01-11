@@ -1,4 +1,4 @@
-@import "../../../../main.global";
+@import '../../../../main.global';
 
 .avatar {
   width: 20px;
@@ -6,7 +6,8 @@
   border-radius: 100%;
 }
 
-.createdAt, .createdAt * {
+.createdAt,
+.createdAt * {
   color: $gray99;
 }
 
@@ -43,7 +44,6 @@
 .userLink {
   display: flex;
   align-items: center;
-
 
   @include media-tablet {
     margin-left: 5px;

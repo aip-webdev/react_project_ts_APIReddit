@@ -1,3 +1,3 @@
-import {pickFromSyntheticEvent} from "./pickFromSyntheticEvent";
+import { pickFromSyntheticEvent } from './pickFromSyntheticEvent';
 
-export const getValue = pickFromSyntheticEvent<HTMLInputElement>()('value');
+export const getValue = pickFromSyntheticEvent<HTMLInputElement>()('value')

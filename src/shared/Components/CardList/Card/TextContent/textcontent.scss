@@ -1,4 +1,4 @@
-@import "../../../../../main.global";
+@import '../../../../../main.global';
 
 .textContent {
   padding: 20px 20px 15px;
@@ -16,14 +16,12 @@
     align-content: center;
     flex-flow: row wrap;
     padding: 0;
-
   }
 
   @include media-desktop {
     flex-basis: 672px;
     cursor: auto;
     max-width: 80%;
-
   }
 }
 
@@ -92,7 +90,3 @@
     display: inline;
   }
 }
-
-
-
-

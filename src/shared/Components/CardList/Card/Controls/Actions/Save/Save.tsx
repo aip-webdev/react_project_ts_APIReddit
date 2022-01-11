@@ -1,20 +1,22 @@
 import React from 'react';
-import {ActionButton} from "../ActionButton";
-import {EIcon, Icon} from "../../../../../ReusedComponents/Icon";
+import { EIcon, Icon } from '../../../../../ReusedComponents/Icon';
+import { ActionButton } from '../ActionButton';
 
 interface ISave {
-    text?: string;
-    textHide?: boolean;
-    btnClassName?: string;
+	text?: string
+	textHide?: boolean
+	btnClassName?: string
 }
 
-export function Save({text = 'Сохранить', textHide, btnClassName}: ISave) {
-    return (
-        <ActionButton
-            className={btnClassName}
-            children={<Icon type={EIcon.save} width={10} height={10}/>}
-            text={text}
-            textIsHide={textHide}
-        />
-    );
-}
+export const Save = React.memo(
+  ({ text = 'Сохранить', textHide, btnClassName }: ISave): JSX.Element =>
+    <ActionButton
+      className={btnClassName}
+
+      text={text}
+      textIsHide={textHide}
+    >
+      <Icon type={EIcon.save} width={10} height={10} />
+    </ActionButton>
+)
+

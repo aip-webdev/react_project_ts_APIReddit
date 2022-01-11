@@ -1,9 +1,9 @@
-@import "../../../../main.global";
+@import '../../../../main.global';
 
 .selectButton {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ECECEC;
+  border-bottom: 1px solid #ececec;
   line-height: 36px;
   justify-content: space-between;
   font-size: 12px;
@@ -45,7 +45,7 @@
 }
 
 .sortList {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 3px;
   min-width: 100%;
   @include media-tablet {
@@ -60,7 +60,7 @@
 .listLine {
   display: flex;
   line-height: 36px;
-  border-bottom: 1px solid #ECECEC;
+  border-bottom: 1px solid #ececec;
   position: relative;
   font-size: 12px;
   width: 100%;

@@ -1,4 +1,4 @@
-@import "../../../../main.global";
+@import '../../../../main.global';
 
 .container {
   position: absolute;
@@ -74,27 +74,30 @@
   0% {
     left: -10px;
   }
-  20%, 100% {
+  20%,
+  100% {
     left: 10px;
   }
 }
 
 @keyframes show-dot {
-  0%, 20% {
+  0%,
+  20% {
     width: 0;
     height: 0;
     margin: 5px 15px 5px 5px;
   }
-  30%, 100% {
+  30%,
+  100% {
     width: 10px;
     height: 10px;
     margin: 0 10px 0 0;
-
   }
 }
 
 @keyframes dot-fall-left {
-  0%, 5% {
+  0%,
+  5% {
     left: 0;
   }
   100% {
@@ -103,10 +106,12 @@
 }
 
 @keyframes dot-fall-top {
-  0%, 5% {
+  0%,
+  5% {
     top: 0;
   }
-  30%, 100% {
+  30%,
+  100% {
     top: 50vh;
   }
 }

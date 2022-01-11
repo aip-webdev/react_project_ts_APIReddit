@@ -1,1 +1,1 @@
-export * from './CommentReplyFormUncontrolled';
+export * from './CommentReplyFormUncontrolled'

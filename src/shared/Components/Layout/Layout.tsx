@@ -2,13 +2,7 @@ import React from 'react';
 import styles from './layout.scss';
 
 interface ILayoutProps {
-    children?: React.ReactNode;
+	children?: React.ReactNode
 }
 
-export function Layout({children}: ILayoutProps,) {
-    return (
-        <div className={styles.layout}>
-            {children}
-        </div>
-    );
-}
+export const Layout = ({ children }: ILayoutProps) => <div className={styles.layout}>{children}</div>

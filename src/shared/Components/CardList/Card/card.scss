@@ -1,4 +1,4 @@
-@import "../../../../main.global";
+@import '../../../../main.global';
 
 .card {
   position: relative;
@@ -17,18 +17,20 @@
     padding: 20px 45px 20px 72px;
     margin: 0;
 
-    &:hover, &:focus-within {
+    &:hover,
+    &:focus-within {
       outline: 1px solid $grayD9;
       z-index: 100;
     }
 
-    &:hover h2 a, &:focus-within h2 a {
+    &:hover h2 a,
+    &:focus-within h2 a {
       color: $orange;
     }
   }
 }
 
-.emptyCard  > * {
+.emptyCard > * {
   flex: 1 1 100%;
 }
 

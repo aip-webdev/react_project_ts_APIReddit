@@ -2,19 +2,16 @@ import React from 'react';
 import styles from './preview.scss';
 
 interface IPreviewProps {
-    url: string;
+	url: string
 }
 
-export function Preview(props: IPreviewProps) {
-    const {url} = props;
-
+export const Preview = React.memo(
+  (props: IPreviewProps): JSX.Element => {
+    const { url } = props
     return (
-        <div className={styles.preview}>
-            <img
-                className={styles.previewImg}
-                src={url}
-                alt="Post image"
-            />
-        </div>
-    );
-}
+      <div className={styles.preview}>
+        <img className={styles.previewImg} src={url} alt="Post image" />
+      </div>
+    )
+  }
+)

@@ -1,1 +1,1 @@
-export * from './PostCommentForm';
+export * from './PostCommentForm'

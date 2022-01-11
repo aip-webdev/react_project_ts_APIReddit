@@ -1,25 +1,27 @@
-import React, {CSSProperties} from 'react';
+import React, { CSSProperties } from 'react';
+import { EIcon, Icon } from '../../../../ReusedComponents/Icon';
 import styles from './karmacounter.scss';
-import {EIcon, Icon} from "../../../../ReusedComponents/Icon";
 
 interface IKarmaCounterProps {
-    style?: CSSProperties;
-    count: number;
+	style?: CSSProperties
+	count: number
 }
 
-export function KarmaCounter(props: IKarmaCounterProps) {
-    const {count, style} = props;
+export const KarmaCounter = React.memo(
+  (props: IKarmaCounterProps): JSX.Element => {
+    const { count, style } = props
     return (
-        <div style={style} className={styles.karmaCounter}>
-            <button className={styles.up}>
-                {<Icon type={EIcon.arrow} width={19} height={10} pathFill='#999999'/>}
-            </button>
+      <div style={style} className={styles.karmaCounter}>
+        <button className={styles.up}>
+          {<Icon type={EIcon.arrow} width={19} height={10} pathFill="#999999" />}
+        </button>
 
-            <span className={styles.karmaValue}>{count}</span>
+        <span className={styles.karmaValue}>{count}</span>
 
-            <button className={styles.down}>
-                {<Icon type={EIcon.arrow} width={19} height={10} pathFill='#999999'/>}
-            </button>
-        </div>
-    );
-}
+        <button className={styles.down}>
+          {<Icon type={EIcon.arrow} width={19} height={10} pathFill="#999999" />}
+        </button>
+      </div>
+    )
+  }
+)

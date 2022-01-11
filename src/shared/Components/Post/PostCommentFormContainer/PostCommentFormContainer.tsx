@@ -1,28 +1,24 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {IInitState} from "../../../../store";
-import {updateCommentFormValue} from "../../../../store/actions/commentFormActions/updateCommentFormValue";
-import {PostCommentForm} from "../PostCommentForm";
-import {IUserData} from "../../../../hooks/useUserData";
+import useStore from '../../../../store';
+import { PostCommentForm } from '../PostCommentForm';
 
-export function PostCommentFormContainer() {
-    const {name} = useSelector<IInitState, IUserData>(state => state.me.myData);
-    let value = useSelector<IInitState, string>(state => state.commentText);
-    const dispatch = useDispatch();
 
-    function handleSubmit() {
-        dispatch(updateCommentFormValue(''))
-    }
+export const PostCommentFormContainer = () => {
+  const { name, value, updateCommentFormValue, } = useStore(state => ({
+    name: state.me.myData.name,
+    value: state.commentText,
+    updateCommentFormValue: state.updateCommentFormValue,
+  }));
 
-    function handleChange(value: string) {
-        dispatch(updateCommentFormValue(value))
-    }
+  const handleSubmit = () => {
+    updateCommentFormValue('');
+  };
 
-    return (
-        <PostCommentForm
-            value={value}
-            name={name}
-            onChange={handleChange}
-            onSubmit={handleSubmit}/>
-    );
-}
+  const handleChange = (value: string) => {
+    updateCommentFormValue(value);
+  };
+
+  return (
+    <PostCommentForm value={value} name={name} onChange={handleChange} onSubmit={handleSubmit} />
+  );
+};

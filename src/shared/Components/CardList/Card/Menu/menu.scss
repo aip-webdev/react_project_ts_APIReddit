@@ -1,4 +1,4 @@
-@import "../../../../../main.global";
+@import '../../../../../main.global';
 
 .menu {
   position: absolute;
@@ -21,7 +21,8 @@
   border-radius: 31px;
   background: transparent;
 
-  &:active, &:hover {
+  &:active,
+  &:hover {
     background-color: rgba(51, 51, 51, 0.1);
   }
 
@@ -45,7 +46,7 @@
   align-items: center;
   height: 37px;
   background-color: $white;
-  border-bottom: 1px solid #ECECEC;
+  border-bottom: 1px solid #ececec;
   font-size: 12px;
   width: 100%;
   z-index: 1000;
@@ -77,12 +78,11 @@
 }
 
 .menuList {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
   min-width: 140px;
   @include media-tablet {
     min-width: 157px;
   }
-
 }

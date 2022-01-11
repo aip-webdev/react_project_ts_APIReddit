@@ -1,15 +1,25 @@
-import {useEffect} from "react";
-import {saveToken} from "../store/actions/tokenActions";
-import {useDispatch, useSelector} from "react-redux";
-import {IInitState} from "../store";
+import { useEffect } from 'react';
+import shallow from 'zustand/shallow';
 
-export function useToken() {
-    const token = useSelector<IInitState, string>(state => state.token);
-    const dispatch = useDispatch();
+import useStore from '../store';
 
-    useEffect(() => {
-        dispatch(saveToken())
-    }, []);
+export const useToken = (): string[] => {
+	const { token, setToken } = useStore((state) => ({
+    token:state.token,
+    setToken: state.setToken
+  }), shallow)
 
-    return [token]
+	useEffect(() => {
+    const localStorageToken = localStorage.getItem('reddit-token')
+    const token = localStorageToken || window.__token__
+
+    if (token !== 'undefined' && !localStorageToken) {
+      localStorage.setItem('reddit-token', token)
+     setToken(token)
+    } else if (token !== 'undefined') {
+      setToken(token)
+    }
+	}, [])
+
+	return [token]
 }

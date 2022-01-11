@@ -1,20 +1,21 @@
 import React from 'react';
-import {ActionButton} from "../ActionButton";
-import {EIcon, Icon} from "../../../../../ReusedComponents/Icon";
+import { EIcon, Icon } from '../../../../../ReusedComponents/Icon';
+import { ActionButton } from '../ActionButton';
 
 interface IHide {
-    text?: string;
-    textHide?: boolean;
-    btnClassName?: string;
+	text?: string
+	textHide?: boolean
+	btnClassName?: string
 }
 
-export function Hide({text = 'Скрыть', textHide, btnClassName}: IHide) {
-    return (
-        <ActionButton
-            className={btnClassName}
-            children={<Icon type={EIcon.hide} width={12} height={12}/>}
-            text={text}
-            textIsHide={textHide}
-        />
-    );
-}
+export const Hide = React.memo(
+  ({ text = 'Скрыть', textHide, btnClassName }: IHide): JSX.Element =>
+    <ActionButton
+      className={btnClassName}
+      text={text}
+      textIsHide={textHide}
+    >
+      <Icon type={EIcon.hide} width={12} height={12} />
+    </ActionButton>
+)
+
